@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 47
+  controlID: 97
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -301,9 +301,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 570.56604
+    y: 515.77356
     width: 1326.6981
-    height: 313.7736
+    height: 313.77362
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Menu
+    - Assets/InteractSystem/Runtime
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -336,16 +336,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Menu
+  - Assets/InteractSystem/Runtime
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Bordi\Documents\Git Projects\unity-templates\Templates
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 40a90000
-    m_LastClickedID: 43328
-    m_ExpandedIDs: 00000000fca7000040a9000000ca9a3bffffff7f
+    m_SelectedIDs: d0a90000
+    m_LastClickedID: 43472
+    m_ExpandedIDs: 000000004ea80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -374,7 +374,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fca70000
+    m_ExpandedIDs: 000000004ea80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -400,8 +400,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 3eaa0000
+    m_LastClickedInstanceID: 43582
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -453,8 +453,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1327.6981
-    y: 78.79246
+    x: 1328.6981
+    y: 24
     width: 410.16992
     height: 805.5472
   m_SerializedDataModeController:
@@ -474,8 +474,8 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 535.24524
+  m_LastInspectedObjectInstanceID: 43582
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 78.79246
+    y: 24
     width: 327.75473
     height: 465.7736
   m_SerializedDataModeController:
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 36da0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
       m_ExpandedIDs: 14fbffff
       m_RenameOverlay:
@@ -568,8 +568,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 328.75473
-    y: 78.79246
+    x: 329.75473
+    y: 24
     width: 996.94336
     height: 465.7736
   m_SerializedDataModeController:
@@ -944,9 +944,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: 0.56913567, y: -0.21445084, z: -0.39818096}
     speed: 2
-    m_Value: {x: 270.1892, y: 214.04341, z: 0}
+    m_Value: {x: 0.56913567, y: -0.21445084, z: -0.39818096}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -984,7 +984,7 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -992,13 +992,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Target: {x: -0.085245974, y: 0.9052899, z: -0.217523, w: -0.35477775}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0.08524597, y: 0.90528977, z: -0.21752296, w: -0.35477772}
   m_Size:
     m_Target: 10
     speed: 2
-    m_Value: 80.36336
+    m_Value: 10
   m_Ortho:
     m_Target: 0
     speed: 2
