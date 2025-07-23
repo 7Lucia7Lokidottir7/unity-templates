@@ -4,5 +4,8 @@
   "displayName": "Health System",
   "description": "",
   "unity": "2022.3",
-  "type": "assets"
+  "type": "assets",
+  "dependencies": {
+    "com.pg.menu": "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/Menu"
+  }
 }
