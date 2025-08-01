@@ -1,10 +1,8 @@
 {
-    "name": "PG.BattleSystem",
-    "rootNamespace": "PG.BattleSystem",
+    "name": "PG.LocomotionSystem",
+    "rootNamespace": "PG.LocomotionSystem",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:1d3db45b969aaa54895e98a813da247d",
-        "GUID:f2a4ad8a9581a9e47b8e7ba08aa322a1"
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -19,6 +19,7 @@ namespace PG.HealthSystem
         private Coroutine _damageCooldownCoroutine;
 
         [Space(10)]
+        public bool useDamage;
         [SerializeField] private GameObject _deathObject;
 
         public event Action<float> damaged;
@@ -34,8 +35,13 @@ namespace PG.HealthSystem
             _healthSlider.maxValue = maxValue;
         }
 
-        public void OnDamage(float damage)
+        public void OnDamage(float damage, bool ignoreDamage = false)
         {
+            if (!ignoreDamage && !useDamage)
+            {
+                return;
+            }
+
             if (_cooldownEnable)
             {
                 if (_damageCooldownCoroutine != null)
@@ -72,8 +78,10 @@ namespace PG.HealthSystem
         
         IEnumerator OnDamageCooldown()
         {
+            useDamage = false;
             yield return new WaitForSeconds(_damageCooldown);
             _damageCooldownCoroutine = null;
+            useDamage = true;
         }
 
         public void OnHeal(float value)

@@ -1,0 +1,13 @@
+{
+  "name": "com.pg.battle-system",
+  "version": "1.0.1",
+  "displayName": "Battle System",
+  "description": "",
+  "unity": "2022.3",
+  "author": "Lucia Lokidottir",
+  "type": "assets",
+  "dependencies": {
+    "com.pg.health-system": "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/HealthSystem#1.0.0",
+    "com.pg.locomotion-system": "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/LocomotionSystem#1.0.1"
+  }
+}
