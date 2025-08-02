@@ -16,6 +16,7 @@ namespace PG.VFXControl
         }
         public Dictionary<string, VisualEffect> visualEffects;
 
+        public VisualEffect GetVisualEffect(int index) => _visualEffects[index].visualEffect;
         public void Play(string name)
         {
             visualEffects.TryGetValue(name, out var visualEffect);
@@ -27,7 +28,7 @@ namespace PG.VFXControl
             _visualEffects[index].visualEffect.Play();
         }
 
-        public void Stop(string name, bool isClear)
+        public void Stop(string name, bool isClear = false)
         {
             visualEffects.TryGetValue(name, out var visualEffect);
             if (isClear)
@@ -41,7 +42,7 @@ namespace PG.VFXControl
             }
         }
 
-        public void Stop(int index, bool isClear)
+        public void Stop(int index, bool isClear = false)
         {
             if (isClear)
             {
