@@ -50,6 +50,11 @@ namespace PG.BattleSystem
                 }
             }
 
+            if (targetEnemy == null)
+            {
+                yield break;
+            }
+
             for (float i = 0; i < _turnDuration; i+= Time.deltaTime)
             {
                 Vector3 dir = (targetEnemy.position - _animator.transform.position).normalized;

@@ -1,0 +1,9 @@
+{
+  "name": "com.pg.vfx-control",
+  "version": "1.0.1",
+  "displayName": "VFX Control",
+  "description": "",
+  "unity": "2022.3",
+  "author": "Lucia Lokidottir",
+  "type": "assets"
+}

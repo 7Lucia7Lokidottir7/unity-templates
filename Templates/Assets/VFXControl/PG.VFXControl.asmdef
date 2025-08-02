@@ -1,9 +1,7 @@
 {
-    "name": "PG.InteractSystem",
-    "rootNamespace": "PG.InteractSystem",
-    "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c"
-    ],
+    "name": "PG.VFXControl",
+    "rootNamespace": "PG.VFXControl",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
