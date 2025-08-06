@@ -6,4 +6,7 @@
   "unity": "2022.3",
   "type": "assets",
   "author": "Lucia Lokidottir"
+  "dependencies": {
+    "com.unity.inputsystem": "1.14.2"
+  }
 }

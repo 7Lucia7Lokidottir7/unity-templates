@@ -1,0 +1,9 @@
+{
+  "name": "com.pg.template-package-manager",
+  "version": "1.0.0",
+  "displayName": "Templates package manager",
+  "description": "",
+  "unity": "2022.3",
+  "type": "assets",
+  "author": "Lucia Lokidottir"
+}
