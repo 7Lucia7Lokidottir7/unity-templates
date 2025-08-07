@@ -1,0 +1,9 @@
+{
+  "name": "com.pg.random-loot",
+  "version": "1.0.1",
+  "displayName": "RandomLoot",
+  "description": "",
+  "unity": "2022.3",
+  "author": "Lucia Lokidottir",
+  "type": "assets"
+}
