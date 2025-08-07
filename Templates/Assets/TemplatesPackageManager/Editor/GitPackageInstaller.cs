@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -24,9 +25,8 @@ namespace PG.TemplatesPackageManager
 
         void OnEnable()
         {
-            
 
-            // для каждого сразу проверяем, установлен ли он
+            // раз инициализируем статусы
             foreach (var pkg in packages)
             {
                 pkg.status = "Checking…";
@@ -48,7 +48,7 @@ namespace PG.TemplatesPackageManager
             root.style.paddingTop = 16;
             root.style.paddingBottom = 8;
 
-            // заголовок
+            // Header
             var title = new Label("Git Package Installer");
             title.style.unityFontStyleAndWeight = FontStyle.Bold;
             title.style.fontSize = 20;
@@ -60,11 +60,11 @@ namespace PG.TemplatesPackageManager
             desc.style.marginBottom = 8;
             root.Add(desc);
 
-            // scroll
+            // Scroll
             var scroll = new ScrollView { style = { flexGrow = 1f } };
             root.Add(scroll);
 
-            // цвета
+            // Colors
             var bg = new Color(0.11f, 0.13f, 0.18f, 1f);
             var green = new Color(0.32f, 0.88f, 0.44f, 1f);
             var blue = new Color(0.25f, 0.53f, 0.93f, 1f);
@@ -82,9 +82,8 @@ namespace PG.TemplatesPackageManager
                 box.style.borderBottomColor = new Color(0.2f, 0.2f, 0.2f, 0.34f);
                 box.style.marginBottom = 2;
 
-                // имя
+                // Name
                 var name = new Label(pkg.name);
-                name.style.paddingLeft = 4;
                 name.style.flexBasis = 0;
                 name.style.flexGrow = 2;
                 name.style.maxWidth = 250;
@@ -96,7 +95,7 @@ namespace PG.TemplatesPackageManager
                 name.style.textOverflow = TextOverflow.Ellipsis;
                 box.Add(name);
 
-                // ссылка
+                // URL
                 var url = new TextField { value = pkg.url };
                 url.isReadOnly = true;
                 url.style.flexBasis = 0;
@@ -115,14 +114,14 @@ namespace PG.TemplatesPackageManager
                 url.style.textOverflow = TextOverflow.Ellipsis;
                 box.Add(url);
 
-                // открыть в браузере
+                // Open button
                 var open = new Button(() => Application.OpenURL(pkg.url)) { text = "🔗" };
                 open.style.width = 24;
                 open.tooltip = "Open in browser";
                 open.style.marginLeft = 2;
                 box.Add(open);
 
-                // статус
+                // Status
                 var status = new Label(pkg.status);
                 status.style.width = 100;
                 status.style.marginLeft = 8;
@@ -130,7 +129,7 @@ namespace PG.TemplatesPackageManager
                 status.style.color = pkg.isInstalled ? green : gray;
                 box.Add(status);
 
-                // кнопка
+                // Install/Update button
                 var btn = new Button(() => InstallPackageWithDeps(pkg))
                 {
                     text = pkg.isInstalled ? "Update" : "Install"
@@ -148,6 +147,7 @@ namespace PG.TemplatesPackageManager
             }
         }
 
+        // проверяем по точному packageId
         private async void CheckInstalledStatus(GitPackage pkg, Action onChanged)
         {
             var req = Client.List(true);
@@ -155,7 +155,7 @@ namespace PG.TemplatesPackageManager
                 await Task.Delay(30);
 
             if (req.Status == StatusCode.Success &&
-                req.Result.Any(u => u.packageId.Contains(GetRepoName(pkg.url))))
+                req.Result.Any(u => u.name == pkg.packageId))
             {
                 pkg.isInstalled = true;
                 pkg.status = "Installed";
@@ -169,20 +169,10 @@ namespace PG.TemplatesPackageManager
             onChanged?.Invoke();
         }
 
-        static string GetRepoName(string url)
-        {
-            if (string.IsNullOrEmpty(url)) return "";
-            var parts = url.Split('/');
-            return parts.Length >= 2
-                ? parts[parts.Length - 1]
-                      .Split(new[] { '.', '?' }, StringSplitOptions.RemoveEmptyEntries)[0]
-                      .ToLower()
-                : url.ToLower();
-        }
-
         void InstallPackageWithDeps(GitPackage pkg)
         {
-            if (pkg.isInstalling) return;
+            if (pkg.isInstalling)
+                return;
 
             pkg.isInstalling = true;
             pkg.status = "Installing…";
@@ -211,16 +201,22 @@ namespace PG.TemplatesPackageManager
 
             void Progress()
             {
-                if (!pkg.request.IsCompleted) return;
+                if (!pkg.request.IsCompleted)
+                    return;
                 EditorApplication.update -= Progress;
-
                 pkg.isInstalling = false;
-                if (pkg.request.Status == StatusCode.Success)
-                    pkg.status = "Installed";
-                else
-                    pkg.status = "Error";
 
-                pkg.isInstalled = (pkg.request.Status == StatusCode.Success);
+                if (pkg.request.Status == StatusCode.Success)
+                {
+                    pkg.isInstalled = true;
+                    pkg.status = "Installed";
+                }
+                else
+                {
+                    pkg.isInstalled = false;
+                    pkg.status = "Error";
+                }
+
                 CreateGUI();
                 onComplete?.Invoke();
             }
