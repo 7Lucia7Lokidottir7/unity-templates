@@ -125,19 +125,33 @@ namespace PG.TemplatesPackageManager
                 box.style.marginBottom = 2;
 
                 var name = new Label(pkg.name);
-                name.style.width = 140; name.style.fontSize = 15;
+                name.style.fontSize = 15;
                 name.style.unityFontStyleAndWeight = FontStyle.Bold;
                 name.style.color = Color.white;
                 name.style.paddingLeft = 5;
 
+
+                name.style.flexBasis = 0;
+                name.style.flexGrow = 2;
+                name.style.maxWidth = 250;
+                name.style.unityTextAlign = TextAnchor.MiddleLeft;
+                name.style.whiteSpace = WhiteSpace.NoWrap;
+                name.style.overflow = Overflow.Hidden;
+                name.style.textOverflow = TextOverflow.Ellipsis;
+
+
+
                 var url = new Label(pkg.url);
-                url.style.flexGrow = 1;
+                url.style.flexBasis = 0;
+                url.style.flexGrow = 4;
                 url.style.fontSize = 10;
                 url.style.color = blue;
                 url.style.marginLeft = 6;
+                url.style.maxWidth = 540;
+                url.style.unityTextAlign = TextAnchor.MiddleLeft;
                 url.style.whiteSpace = WhiteSpace.NoWrap;
                 url.style.overflow = Overflow.Hidden;
-                url.style.unityTextAlign = TextAnchor.MiddleLeft;
+                url.style.textOverflow = TextOverflow.Ellipsis;
                 url.RegisterCallback<MouseDownEvent>(evt => {
                     if (evt.button == 0) Application.OpenURL(pkg.url);
                 });
