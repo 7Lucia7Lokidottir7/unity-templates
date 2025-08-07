@@ -87,7 +87,7 @@ namespace PG.TemplatesPackageManager
             title.style.marginBottom = 8;
             root.Add(title);
 
-            var desc = new Label("Установка git-пакетов и авто-проверка обновлений:");
+            var desc = new Label("Installing git packages and auto-checking for updates:");
             desc.style.fontSize = 12;
             desc.style.marginBottom = 8;
             desc.style.color = new Color(0.75f, 0.75f, 0.9f, 1f);
@@ -124,6 +124,7 @@ namespace PG.TemplatesPackageManager
                 name.style.width = 140; name.style.fontSize = 15;
                 name.style.unityFontStyleAndWeight = FontStyle.Bold;
                 name.style.color = Color.white;
+                name.style.paddingLeft = 5;
 
                 var url = new Label(pkg.url);
                 url.style.flexGrow = 1;
@@ -133,6 +134,16 @@ namespace PG.TemplatesPackageManager
                 url.style.whiteSpace = WhiteSpace.NoWrap;
                 url.style.overflow = Overflow.Hidden;
                 url.style.unityTextAlign = TextAnchor.MiddleLeft;
+                url.RegisterCallback<MouseDownEvent>(evt => {
+                    if (evt.button == 0) Application.OpenURL(pkg.url);
+                });
+                url.RegisterCallback<MouseEnterEvent>(evt => {
+                    url.text = $"<u>{pkg.url}</u>";
+                });
+                url.RegisterCallback<MouseLeaveEvent>(evt => {
+                    url.text = pkg.url;
+                });
+
 
                 var status = new Label(pkg.status);
                 status.style.width = 120;
@@ -196,13 +207,6 @@ namespace PG.TemplatesPackageManager
                 // --- Проверка установлен ли пакет и есть ли обновление ---
                 CheckPackageStatus(pkg, Refresh);
             }
-
-            // Подсказка
-            var help = new Label("• Автоматическая проверка: установка, обновление, зависимости (git).\n• Для правильной работы версии на гите укажи \"version\" в package.json в каждой папке пакета.");
-            help.style.marginTop = 14;
-            help.style.fontSize = 11;
-            help.style.color = gray;
-            root.Add(help);
         }
 
         // Проверяет: установлен ли пакет и актуальна ли версия (версии берутся из package.json локально и с гита)
