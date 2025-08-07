@@ -60,6 +60,11 @@ namespace PG.TemplatesPackageManager
                     url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/VFXControl",
                     packageId = "com.pg.vfx-control"
                 },
+                new GitPackage {
+                    name      = "Hunger System",
+                    url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/HungerSystem",
+                    packageId = "com.pg.hunger-system"
+                },
             };
     }
 }
