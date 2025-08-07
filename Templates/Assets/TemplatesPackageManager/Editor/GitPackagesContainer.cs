@@ -14,9 +14,9 @@ namespace PG.TemplatesPackageManager
                     packageId = "com.pg.template-package-manager"
                 },
                 new GitPackage {
-                    name      = "Menu System",
+                    name      = "Menu",
                     url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/Menu",
-                    packageId = "com.pg.menu-system",
+                    packageId = "com.pg.menu",
                     dependencies = new List<GitPackage>{
                         new GitPackage {
                             name      = "PGTween",

@@ -84,6 +84,7 @@ namespace PG.TemplatesPackageManager
 
                 // Name
                 var name = new Label(pkg.name);
+                name.style.paddingLeft = 4;
                 name.style.flexBasis = 0;
                 name.style.flexGrow = 2;
                 name.style.maxWidth = 250;
