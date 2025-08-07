@@ -30,6 +30,10 @@ namespace PG.TemplatesPackageManager
             packages = new List<GitPackage>
         {
             new GitPackage {
+                name="Updating the Package Window",
+                url="https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/TemplatesPackageManager"
+            },
+            new GitPackage {
                 name="Menu System",
                 url="https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/Menu",
                 dependencies = new List<GitPackage>
