@@ -2,6 +2,7 @@
 using UnityEditor.PackageManager.Requests;
 namespace PG.TemplatesPackageManager
 {
+
     public class GitPackage
     {
         public string name;
@@ -11,9 +12,5 @@ namespace PG.TemplatesPackageManager
         public AddRequest request;
         public bool isInstalling = false;
         public bool isInstalled = false;
-        public bool hasUpdate = false;
-        public string currentVersion = null;
-        public string latestVersion = null;
-        public string repoRawPackageJsonUrl = null;
     }
 }
