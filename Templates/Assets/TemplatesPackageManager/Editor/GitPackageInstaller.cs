@@ -24,6 +24,40 @@ namespace PG.TemplatesPackageManager
             wnd.minSize = new Vector2(480, 500);
         }
 
+        const double k_CheckInterval = 60.0;      // раз в 60 сек
+        double _nextCheckTime;
+
+        // Подпишемся на update, когда окно разрешено
+        void OnEnable()
+        {
+            _nextCheckTime = EditorApplication.timeSinceStartup + k_CheckInterval;
+            EditorApplication.update += OnEditorUpdate;
+        }
+
+        // Отпишемся, когда окно закроется
+        void OnDisable()
+        {
+            EditorApplication.update -= OnEditorUpdate;
+        }
+
+        void OnEditorUpdate()
+        {
+            if (EditorApplication.timeSinceStartup < _nextCheckTime)
+                return;
+            _nextCheckTime = EditorApplication.timeSinceStartup + k_CheckInterval;
+
+            // Перебираем пакеты и проверяем статус
+            foreach (var pkg in packages)
+                CheckPackageStatus(pkg, () => {
+                    // Внутри onStatusChanged вызывайте то же, что и в CreateGUI
+                    // например: CreateGUI();
+                    CreateGUI();
+                });
+        }
+
+
+
+
         void CreateGUI()
         {
             // Данные пакетов
