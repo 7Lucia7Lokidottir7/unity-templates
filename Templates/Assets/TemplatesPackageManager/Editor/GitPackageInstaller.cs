@@ -197,7 +197,7 @@ namespace PG.TemplatesPackageManager
 
         void InstallSingle(GitPackage pkg, Action onComplete = null)
         {
-            pkg.request = Client.Add(pkg.url);
+            pkg.request = Client.Add(string.IsNullOrEmpty(pkg.url) ? pkg.packageId : pkg.url);
             EditorApplication.update += Progress;
 
             void Progress()
@@ -216,6 +216,7 @@ namespace PG.TemplatesPackageManager
                 {
                     pkg.isInstalled = false;
                     pkg.status = "Error";
+                    Debug.LogError(pkg.request.Error.message);
                 }
 
                 CreateGUI();

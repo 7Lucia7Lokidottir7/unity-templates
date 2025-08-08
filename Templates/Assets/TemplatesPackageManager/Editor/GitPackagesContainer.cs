@@ -65,6 +65,16 @@ namespace PG.TemplatesPackageManager
                     url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/HungerSystem",
                     packageId = "com.pg.hunger-system"
                 },
+                new GitPackage {
+                    name      = "Inventory System",
+                    url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/InventorySystem",
+                    packageId = "com.pg.inventory-system"
+                },
+                new GitPackage {
+                    name      = "Shoot System",
+                    url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/ShootSystem",
+                    packageId = "com.pg.shoot-system"
+                },
             };
     }
 }

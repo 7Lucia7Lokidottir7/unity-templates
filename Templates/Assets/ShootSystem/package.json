@@ -1,7 +1,7 @@
 {
-  "name": "com.pg.battle-system",
+  "name": "com.pg.shoot-system",
   "version": "1.0.2",
-  "displayName": "Battle System",
+  "displayName": "Shoot System",
   "description": "",
   "unity": "2022.3",
   "author": "Lucia Lokidottir",
