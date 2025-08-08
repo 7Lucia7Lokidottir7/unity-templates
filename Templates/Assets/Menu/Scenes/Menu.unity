@@ -207,6 +207,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2363866329200543812, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244510173996298672, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.9799805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244510173996298672, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -152.33005
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912218225646045207, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.434021
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362633795402777863, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.9998779
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362633795402777863, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.7999878
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301735891837764333, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.44006348
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303157935869625579, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.15997314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668031122018209157, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 7789359416653478315, guid: 150de9fc7735f89449db19aa9e4db53c, type: 3}
       propertyPath: m_Name
       value: "Menu \u2013 Canvas"
@@ -315,6 +351,7 @@ GameObject:
   - component: {fileID: 1299080747}
   - component: {fileID: 1299080746}
   - component: {fileID: 1299080748}
+  - component: {fileID: 1299080749}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -425,6 +462,31 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &1299080749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299080745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c423fed7cfd44824b9ca853e52abef76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewMode: 1
+  columns: 4
+  itemContainer: {fileID: 0}
+  cellContainer: {fileID: 0}
+  addressableCell:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  largeIconPanel: {fileID: 0}
+  descriptionPanel: {fileID: 0}
+  _fileName: Inventory.json
 --- !u!1 &1696224926
 GameObject:
   m_ObjectHideFlags: 0
