@@ -27,7 +27,10 @@ namespace PG.HealthSystem
 
         private void OnDestroy()
         {
-            StopCoroutine(_hitCoroutine);
+            if (_hitCoroutine != null)
+            {
+                StopCoroutine(_hitCoroutine);
+            }
         }
         public void Setup(float maxValue, float value = 0)
         {
