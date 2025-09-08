@@ -10,7 +10,7 @@ namespace PG.InteractSystem
 
         public InputActionProperty interactProperty;
         private InputAction _interactAction;
-        [field:SerializeField]public UnityEvent interactEvent { get; set; }
+        [field: SerializeField] public UnityEvent interactEvent { get; set; }
         private void Awake()
         {
             _interactAction = InputSystem.actions.FindAction(interactProperty.reference.name);
@@ -26,10 +26,12 @@ namespace PG.InteractSystem
         public void OnInteract()
         {
             interacted?.Invoke();
+            interactEvent?.Invoke();
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
+            Debug.Log("Interact");
             OnInteract();
         }
         private void OnTriggerEnter(Collider other)
