@@ -21,7 +21,7 @@ namespace PG.BattleSystem
         private Coroutine _coroutine;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        void Awake()
         {
             _dashAction = InputSystem.actions.FindAction(_dashProperty.reference.name);
             _moveAction = InputSystem.actions.FindAction(_moveProperty.reference.name);
