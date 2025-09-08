@@ -27,6 +27,9 @@ namespace PG.InteractSystem
         {
             interacted?.Invoke();
             interactEvent?.Invoke();
+
+            IInteractable.isInteractActive = false;
+            IInteractable.visibleInteracted?.Invoke(false);
         }
 
         public void OnInteract(InputAction.CallbackContext context)

@@ -13,6 +13,7 @@ namespace PG.BattleSystem
         [SerializeField] private string _attackParameter = "Attack";
         [SerializeField] private float _turnDuration = 0.1f;
         [SerializeField] private float _checkEnemyRadius = 1f;
+        [SerializeField] private LayerMask _targetLayers;
         private Coroutine _turnCoroutine;
         public Transform targetEnemy;
         private void OnEnable()
@@ -38,7 +39,7 @@ namespace PG.BattleSystem
         }
         IEnumerator TurnToEnemy()
         {
-            Collider[] enemies = Physics.OverlapSphere(_animator.transform.position, _checkEnemyRadius);
+            Collider[] enemies = Physics.OverlapSphere(_animator.transform.position, _checkEnemyRadius, _targetLayers);
             float maxDistance = Mathf.Infinity;
             for (int i = 0; i < enemies.Length; i++)
             {

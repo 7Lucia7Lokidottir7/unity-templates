@@ -38,7 +38,7 @@ namespace PG.LocomotionSystem
         // OnStateMachineEnter is called when entering a state machine via its Entry Node
         override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
         {
-            _thirdPersonMovement = animator.GetComponent<ThirdPersonMovement>();
+            _thirdPersonMovement = animator.GetComponentInChildren<ThirdPersonMovement>();
             _thirdPersonMovement.enabled = _enabled;
         }
 
