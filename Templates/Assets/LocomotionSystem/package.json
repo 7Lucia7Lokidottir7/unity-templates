@@ -7,6 +7,6 @@
   "type": "assets",
   "author": "Lucia Lokidottir",
   "dependencies": {
-    "com.unity.inputsystem": "1.14.1"
+    "com.unity.inputsystem": "1.14.2"
   }
 }

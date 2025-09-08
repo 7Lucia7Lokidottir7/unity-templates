@@ -9,8 +9,20 @@ namespace PG.InteractSystem
         private const string _PLAYER_TAG = "Player";
 
         public InputActionProperty interactProperty;
+        public InputAction _interactAction;
         [field:SerializeField]public UnityEvent interactEvent { get; set; }
-
+        private void Awake()
+        {
+            _interactAction = InputSystem.actions.FindAction(interactProperty.reference.name);
+        }
+        private void OnDisable()
+        {
+            _interactAction.performed -= OnInteract;
+        }
+        private void OnEnable()
+        {
+            _interactAction.performed += OnInteract;
+        }
         public void OnInteract()
         {
             interacted?.Invoke();

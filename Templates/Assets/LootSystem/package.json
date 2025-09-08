@@ -1,13 +1,12 @@
 {
-  "name": "com.pg.inventory-system",
-  "version": "1.0.2",
-  "displayName": "Inventory System",
+  "name": "com.pg.loot-system",
+  "version": "1.0.1",
+  "displayName": "Loot System",
   "description": "",
   "unity": "2022.3",
   "author": "Lucia Lokidottir",
   "type": "assets",
   "dependencies": {
-    "com.unity.addressables": "2.6.0",
     "com.unity.inputsystem": "1.14.2"
   }
 }

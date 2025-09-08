@@ -71,6 +71,25 @@ namespace PG.TemplatesPackageManager
                     packageId = "com.pg.inventory-system"
                 },
                 new GitPackage {
+                    name      = "Loot System",
+                    url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/LootSystem",
+                    packageId = "com.pg.loot-system",
+                    dependencies = new List<GitPackage>
+                    {
+                        new GitPackage
+                        {
+                            name      = "Inventory System",
+                            url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/InventorySystem",
+                            packageId = "com.pg.inventory-system"
+                        },
+                        new GitPackage {
+                            name      = "Interact System",
+                            url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/InteractSystem",
+                            packageId = "com.pg.interact-system"
+                        }
+                    }
+                },
+                new GitPackage {
                     name      = "Shoot System",
                     url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/ShootSystem",
                     packageId = "com.pg.shoot-system"
