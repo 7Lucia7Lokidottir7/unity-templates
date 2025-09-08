@@ -39,7 +39,7 @@ namespace PG.BattleSystem
         // Update is called once per frame
         void OnDash(InputAction.CallbackContext context)
         {
-            if (_moveAction.ReadValue<float>() > 0.1f && _coroutine == null)
+            if (_moveAction.ReadValue<Vector2>().magnitude > 0.1f && _coroutine == null)
             {
                 _animator.SetTrigger(_dashParameter);
                 _coroutine = StartCoroutine(OnDashing());
