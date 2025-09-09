@@ -14,6 +14,7 @@ namespace PG.TemplatesPackageManager
     public partial class GitPackageInstaller : EditorWindow
     {
 
+        [MenuItem("Tools/PG/Git Package Installer")]
         [MenuItem("Window/PG/Git Package Installer")]
         [MenuItem("Window/Package Management/Git Package Installer")]
         public static void ShowWindow()

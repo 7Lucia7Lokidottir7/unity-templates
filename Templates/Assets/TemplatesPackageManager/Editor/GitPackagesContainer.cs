@@ -94,6 +94,11 @@ namespace PG.TemplatesPackageManager
                     url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/ShootSystem",
                     packageId = "com.pg.shoot-system"
                 },
+                new GitPackage {
+                    name      = "PG Dialogue Graph",
+                    url       = "https://github.com/7Lucia7Lokidottir7/Dialogue-Graph.git?path=/Dialogue%20Graph/Assets/Dialogue%20Graph",
+                    packageId = "com.pg.dialogue-graph"
+                }
             };
     }
 }
