@@ -98,6 +98,11 @@ namespace PG.TemplatesPackageManager
                     name      = "PG Dialogue Graph",
                     url       = "https://github.com/7Lucia7Lokidottir7/Dialogue-Graph.git?path=/Dialogue%20Graph/Assets/Dialogue%20Graph",
                     packageId = "com.pg.dialogue-graph"
+                },
+                new GitPackage {
+                    name      = "PG Story Graph",
+                    url       = "https://github.com/7Lucia7Lokidottir7/Story-Graph.git?path=/Story%20Graph/Assets/PG/com.pg.story-graph",
+                    packageId = "com.pg.story-graph"
                 }
             };
     }
