@@ -11,7 +11,7 @@ namespace PG.LocalizationSystem
         {
             Localize();
         }
-        void Localize()
+        public void Localize()
         {
             _textObject.text = LocalizationSystem.instance.GetLocalizedValue(_key, _textObject.text);
         }

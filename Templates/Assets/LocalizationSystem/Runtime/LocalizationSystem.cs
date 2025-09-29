@@ -13,8 +13,9 @@ namespace PG.LocalizationSystem
         public TableType tableType => _tableType;
 
         [SerializeField] private TextAsset[] _localizationFiles; // ћассив CSV файлов
-        [SerializeField] private string _language = "English";
-        public string currentLanguage => _language;
+        public string currentLanguage = "English";
+
+        public event System.Action<string> localizationChanged;
 
         public static LocalizationSystem instance;
 
@@ -30,9 +31,39 @@ namespace PG.LocalizationSystem
                 return;
             }
             DontDestroyOnLoad(gameObject);
+
+            localizationChanged += SetLocalizationOnScene;
+
             LoadLocalization();
         }
+        private void OnDestroy()
+        {
+            localizationChanged -= SetLocalizationOnScene;
+        }
+        void SetLocalizationOnScene(string language)
+        {
+            LocalizedGameObject[] localizedGameObjects = FindObjectsByType<LocalizedGameObject>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
 
+            foreach (var item in localizedGameObjects)
+            {
+                item.LocalizeGameObject();
+            }
+
+
+            LocalizedImage[] localizedImages = FindObjectsByType<LocalizedImage>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+
+            foreach (var item in localizedImages)
+            {
+                item.LocalizeImage();
+            }
+
+
+            LocalizeText[] localizedTexts = FindObjectsByType<LocalizeText>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+            foreach (var item in localizedTexts)
+            {
+                item.Localize();
+            }
+        }
         public void LoadLocalization()
         {
             localizedText.Clear();
@@ -64,7 +95,7 @@ namespace PG.LocalizationSystem
                     int languageIndex = -1;
                     for (int i = 0; i < headers.Length; i++)
                     {
-                        if (headers[i].Trim() == _language)
+                        if (headers[i].Trim() == currentLanguage)
                         {
                             languageIndex = i;
                             break;
@@ -73,7 +104,7 @@ namespace PG.LocalizationSystem
 
                     if (languageIndex == -1)
                     {
-                        Debug.LogError($"язык '{_language}' не найден в файле локализации {csvFile.name}.");
+                        Debug.LogError($"язык '{currentLanguage}' не найден в файле локализации {csvFile.name}.");
                         continue;
                     }
 
@@ -98,6 +129,7 @@ namespace PG.LocalizationSystem
                     }
                 }
             }
+            localizationChanged?.Invoke(currentLanguage);
         }
 
         private string[] ParseCSVLine(string line)
@@ -152,6 +184,11 @@ namespace PG.LocalizationSystem
             return fields.ToArray();
         }
 
+        public void SetLanguage(string value)
+        {
+            currentLanguage = value;
+            LoadLocalization();
+        }
 
         public string GetLocalizedValue(string key, string defaultValue = null)
         {
