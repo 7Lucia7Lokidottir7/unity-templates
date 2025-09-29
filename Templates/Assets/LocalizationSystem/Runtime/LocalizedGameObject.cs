@@ -5,6 +5,8 @@ namespace PG.LocalizationSystem
     public class LocalizedGameObject : MonoBehaviour
     {
         [SerializeField] private ObjectLanguageElement[] _languageElements;
+
+        [System.Serializable]
         private class ObjectLanguageElement
         {
             public string language;
