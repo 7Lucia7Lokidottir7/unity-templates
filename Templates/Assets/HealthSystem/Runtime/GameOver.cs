@@ -24,6 +24,7 @@ namespace PG.HealthSystem
                 _canvasGroup.alpha = Mathf.Lerp(0, 1f, i / _transitionDuration);
             }
             _canvasGroup.alpha = 1f;
+            dead?.Invoke();
         }
     }
 }
