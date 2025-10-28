@@ -9,6 +9,8 @@ namespace PG.LocalizationSystem
         [SerializeField] private string _key;
         [ContextMenu("Get Cache")]
         private void GetCache() => TryGetComponent(out _textObject);
+        [ContextMenu("Get Key Cache")]
+        private void GetKeyCache() => _key = _textObject.text;
         private void Start()
         {
             Localize();
