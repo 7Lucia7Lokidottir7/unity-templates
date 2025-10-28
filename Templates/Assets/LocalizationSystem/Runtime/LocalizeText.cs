@@ -7,6 +7,8 @@ namespace PG.LocalizationSystem
     {
         [SerializeField] private TMP_Text _textObject;
         [SerializeField] private string _key;
+        [ContextMenu("Get Cache")]
+        private void GetCache() => TryGetComponent(out _textObject);
         private void Start()
         {
             Localize();
