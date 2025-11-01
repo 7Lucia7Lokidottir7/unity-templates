@@ -28,7 +28,7 @@ namespace PG.Tween
             {
                 for (float i = 0; i < time; i += Time.unscaledDeltaTime)
                 {
-                    if (isStopTween)
+                    if (isStopTween || !Application.isPlaying)
                     {
                         return;
                     }
@@ -39,7 +39,7 @@ namespace PG.Tween
             {
                 for (float i = 0; i < time; i += Time.deltaTime)
                 {
-                    if (isStopTween)
+                    if (isStopTween || !Application.isPlaying)
                     {
                         return;
                     }
@@ -56,7 +56,7 @@ namespace PG.Tween
 
         public static async void OnMaterialValueTween(this Material material, string parameter, float to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -69,7 +69,7 @@ namespace PG.Tween
             }
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -93,7 +93,7 @@ namespace PG.Tween
         }
         public static async void OnMaterialValueTween(this Material material, string parameter, Color to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -105,7 +105,7 @@ namespace PG.Tween
             }
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -130,7 +130,7 @@ namespace PG.Tween
 
         public static async void OnAlphaTween(this CanvasGroup canvasGroup, float to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -142,7 +142,7 @@ namespace PG.Tween
             }
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -166,7 +166,7 @@ namespace PG.Tween
         }
         public static async void OnAlphaTween(this Image image, float to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -178,7 +178,7 @@ namespace PG.Tween
             Color from = image.color;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -202,7 +202,7 @@ namespace PG.Tween
         }
         public static async void OnAlphaTween(this TMP_Text tmpText, float to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -214,7 +214,7 @@ namespace PG.Tween
             float from = tmpText.alpha;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -238,7 +238,7 @@ namespace PG.Tween
         }
         public static async void OnAlphaTween(this Material material, float to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -250,7 +250,7 @@ namespace PG.Tween
             }
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -275,7 +275,7 @@ namespace PG.Tween
 
         public static async void OnColorTween(this Image image, Color to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -288,7 +288,7 @@ namespace PG.Tween
             }
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -317,7 +317,7 @@ namespace PG.Tween
         }
         public static async void OnColorTween(this Material material, Color to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -334,7 +334,7 @@ namespace PG.Tween
                 {
                     return;
                 }
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -357,7 +357,7 @@ namespace PG.Tween
 
         public static async void OnTransformTween(this Transform transform, Vector3 to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -369,7 +369,7 @@ namespace PG.Tween
             Vector3 from = transform.position;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -394,7 +394,7 @@ namespace PG.Tween
 
         public static async void OnTransformLocalTween(this Transform transform, Vector3 to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -406,7 +406,7 @@ namespace PG.Tween
             Vector3 from = transform.localPosition;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -431,7 +431,7 @@ namespace PG.Tween
 
         public static async void OnTransformLocalEulerAnglesTween(this Transform transform, Vector3 to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -443,7 +443,7 @@ namespace PG.Tween
             Vector3 from = transform.localEulerAngles;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -468,7 +468,7 @@ namespace PG.Tween
 
         public static async void OnTransformEulerAnglesTween(this Transform transform, Vector3 to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -480,7 +480,7 @@ namespace PG.Tween
             Vector3 from = transform.eulerAngles;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -505,7 +505,7 @@ namespace PG.Tween
 
         public static async void OnTransformScaleTween(this Transform transform, Vector3 to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -517,7 +517,7 @@ namespace PG.Tween
             Vector3 from = transform.localScale;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -542,7 +542,7 @@ namespace PG.Tween
 
         public static async void OnTransformRotationTween(this Transform transform, Quaternion to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -554,7 +554,7 @@ namespace PG.Tween
             Quaternion from = transform.rotation;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -579,7 +579,7 @@ namespace PG.Tween
 
         public static async void OnTransformLocalRotationTween(this Transform transform, Quaternion to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -591,7 +591,7 @@ namespace PG.Tween
             Quaternion from = transform.localRotation;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -616,7 +616,7 @@ namespace PG.Tween
 
         public static async void OnValueTween(float from, float to, float time, bool useIgnoreTimeScale = false, System.Action<float> onUpdate = default, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -627,7 +627,7 @@ namespace PG.Tween
             float elapsedTime = 0f;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -657,7 +657,7 @@ namespace PG.Tween
         }
         public static async void OnValueTween(Quaternion from, Quaternion to, float time, bool useIgnoreTimeScale = false, System.Action<Quaternion> onUpdate = default, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -668,7 +668,7 @@ namespace PG.Tween
             float elapsedTime = 0f;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -699,7 +699,7 @@ namespace PG.Tween
 
         public static async void OnValueTween(Vector3 from, Vector3 to, float time, bool useIgnoreTimeScale = false, System.Action<Vector3> onUpdate = default, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -710,7 +710,7 @@ namespace PG.Tween
             float elapsedTime = 0f;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -738,7 +738,7 @@ namespace PG.Tween
 
         public static async void OnValueTween(Vector2 from, Vector2 to, float time, bool useIgnoreTimeScale = false, System.Action<Vector2> onUpdate = default, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -749,7 +749,7 @@ namespace PG.Tween
             float elapsedTime = 0f;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
@@ -780,7 +780,7 @@ namespace PG.Tween
 
         public static async void OnValueTween(Color from, Color to, float time, bool useIgnoreTimeScale = false, System.Action<Color> onUpdate = default, AnimationCurve animationCurve = null, System.Action ended = null)
         {
-            if (isStopTween)
+            if (isStopTween || !Application.isPlaying)
             {
                 return;
             }
@@ -791,7 +791,7 @@ namespace PG.Tween
             float elapsedTime = 0f;
             while (elapsedTime < time)
             {
-                if (isStopTween)
+                if (isStopTween || !Application.isPlaying)
                 {
                     return;
                 }
