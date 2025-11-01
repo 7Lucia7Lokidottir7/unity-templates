@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.pg.pgtween": {
-      "version": "https://github.com/7Lucia7Lokidottir7/PGTween.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "88a503597d06b4013853bc4e1c6a569bd9bec47c"
-    },
     "com.unity.addressables": {
       "version": "2.7.2",
       "depth": 0,

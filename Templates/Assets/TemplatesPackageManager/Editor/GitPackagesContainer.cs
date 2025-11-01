@@ -103,6 +103,16 @@ namespace PG.TemplatesPackageManager
                     name      = "PG Story Graph",
                     url       = "https://github.com/7Lucia7Lokidottir7/Story-Graph.git?path=/Story%20Graph/Assets/PG/com.pg.story-graph",
                     packageId = "com.pg.story-graph"
+                },
+                new GitPackage {
+                    name      = "PGTween",
+                    url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/PGTween",
+                    packageId = "com.pg.pgtween"
+                },
+                new GitPackage {
+                    name      = "PG Hierarchy Folder Creator",
+                    url       = "https://github.com/7Lucia7Lokidottir7/PG-Hierarchy-Folder-Creator.git?path=/Hierarchy%20Folder%20Creator/Assets/PG%20Hierarchy%20Folder%20Creator",
+                    packageId = "com.pg.hierarchy-folder-creator"
                 }
             };
     }

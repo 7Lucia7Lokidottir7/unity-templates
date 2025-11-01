@@ -37,7 +37,7 @@ public class Pause : MonoBehaviour
     {
         ChangePause();
     }
-    public async void ChangePause()
+    public void ChangePause()
     {
         if (isPauseEnable)
         {
@@ -59,15 +59,13 @@ public class Pause : MonoBehaviour
             {
                 _panel.DisableUITween();
                 Time.timeScale = _standardTime;
-                _panel.OnAlphaTween(0f, 0.25f, true);
+                _panel.OnAlphaTween(0f, 0.25f, true, null, () =>
+                {
+                    _panel.gameObject.SetActive(false);
+                    Menu.OnChangeCursorVisible(false); // Восстанавливаем состояние видимости курсора после выхода из паузы
+                });
                 _panel.interactable = false;
                 _panel.blocksRaycasts = false;
-                for (float i = 0; i < 0.25f; i += Time.deltaTime)
-                {
-                    await Task.Yield();
-                }
-                _panel.gameObject.SetActive(false);
-                Menu.OnChangeCursorVisible(false); // Восстанавливаем состояние видимости курсора после выхода из паузы
             }
         }
         
