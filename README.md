@@ -15,3 +15,5 @@ To use templates use this data: <br>
 – https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/LocomotionSystem <br>
 – https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/VFXControl <br>
 – https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/ShootSystem <br>
+– https://github.com/7Lucia7Lokidottir7/PG-Hierarchy-Folder-Creator.git?path=/Hierarchy%20Folder%20Creator/Assets/PG%20Hierarchy%20Folder%20Creator <br>
+– https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/PGTween <br>
