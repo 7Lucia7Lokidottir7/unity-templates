@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PG.LocalizationSystem
+namespace PG.Localization
 {
     public class LocalizationChanger : MonoBehaviour
     {

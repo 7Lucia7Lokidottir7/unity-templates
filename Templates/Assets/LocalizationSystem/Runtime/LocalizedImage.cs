@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PG.LocalizationSystem
+namespace PG.Localization
 {
     public class LocalizedImage : MonoBehaviour
     {

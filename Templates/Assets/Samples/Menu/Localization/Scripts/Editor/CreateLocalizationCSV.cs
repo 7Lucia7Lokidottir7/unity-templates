@@ -1,4 +1,4 @@
-using PG.LocalizationSystem;
+using PG.Localization;
 using System.IO;
 using UnityEditor;
 using UnityEngine;

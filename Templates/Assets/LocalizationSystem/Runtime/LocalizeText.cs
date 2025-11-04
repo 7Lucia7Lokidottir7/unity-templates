@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace PG.LocalizationSystem
+namespace PG.Localization
 {
     public class LocalizeText : MonoBehaviour
     {
