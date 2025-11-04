@@ -1,6 +1,6 @@
 {
   "name": "com.pg.menu",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "displayName": "Menu",
   "description": "",
   "unity": "2022.3",
@@ -8,5 +8,12 @@
   "author": "Lucia Lokidottir",
   "dependencies": {
     "com.unity.inputsystem": "1.14.2"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Localization",
+      "description": "Localization menu panels. Recommended install the PG Localization System",
+      "path": "Samples~/Localization"
+    }
+  ]
 }

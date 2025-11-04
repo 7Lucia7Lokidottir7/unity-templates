@@ -363,7 +363,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/LocalizationSystem/Runtime
+    - Assets/TemplatesPackageManager
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -373,16 +373,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/LocalizationSystem/Runtime
+  - Assets/TemplatesPackageManager
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Git Projects\unity-templates\Templates
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 5ee00000
-    m_LastClickedID: 57438
-    m_ExpandedIDs: 0000000064df000066df000068df00006adf0000
+    scrollPos: {x: 0, y: 170.22641}
+    m_SelectedIDs: 64df0000
+    m_LastClickedID: 57188
+    m_ExpandedIDs: 0000000064df000066df000068df00006adf00006cdf0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -411,7 +411,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000064df000066df000068df00006adf0000
+    m_ExpandedIDs: 0000000064df000066df000068df00006adf00006cdf0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
