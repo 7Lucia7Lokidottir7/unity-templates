@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5485516905204177676}
   - component: {fileID: 7011686996210763500}
   - component: {fileID: 2519112840919863457}
-  - component: {fileID: 2692551615590405644}
+  - component: {fileID: 8343403339900996088}
   m_Layer: 5
   m_Name: "New Game \u2013 Button"
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 3.5
---- !u!114 &2692551615590405644
+--- !u!114 &8343403339900996088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,30 +86,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 628016858507577915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a334759c2d3de4bb4be76d7782f49c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: PG.Menu::ButtonWithText
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 3606140605751879676}
-    m_SelectOnDown: {fileID: 4225147319050239696}
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.34923452, g: 0.34923452, b: 0.34923452, a: 1}
-    m_HighlightedColor: {r: 0.5384479, g: 0.7324048, b: 1, a: 1}
-    m_PressedColor: {r: 0.29763925, g: 0.40626672, b: 0.554, a: 1}
-    m_SelectedColor: {r: 0.35762364, g: 0.6183527, b: 0.9729441, a: 1}
+    m_NormalColor: {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
+    m_HighlightedColor: {r: 0.5372549, g: 0.73333335, b: 1, a: 1}
+    m_PressedColor: {r: 0.29803923, g: 0.40784314, b: 0.5529412, a: 1}
+    m_SelectedColor: {r: 0.35686275, g: 0.61960787, b: 0.972549, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 0e70936a71720dd4d9ff1dbf35bf7537, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 428a807a5a2f3b241bcbabe297927b5c, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 0e70936a71720dd4d9ff1dbf35bf7537, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: a6aa0fdc756312d49b3ff8e10e8ddfe1, type: 3}
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -122,17 +122,26 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: NewGame
-        m_Mode: 5
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SampleScene
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  textObject: {fileID: 8878535784201652302}
+  textColors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
 --- !u!1 &692013915230365025
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,14 +1001,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2171794825212075906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a334759c2d3de4bb4be76d7782f49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 6394690727266944933}
-    m_SelectOnDown: {fileID: 2692551615590405644}
+    m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1039,6 +1048,15 @@ MonoBehaviour:
           m_StringArgument: SampleScene
           m_BoolArgument: 0
         m_CallState: 2
+  textObject: {fileID: 1487332946884664456}
+  textColors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
 --- !u!1 &2342359921611862657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1380,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3676173210321608324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a334759c2d3de4bb4be76d7782f49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1397,10 +1415,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9002331392078266206}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 3342292032129501021}
+        m_TargetAssemblyTypeName: UIShowHide, PG.Menu
+        m_MethodName: Show
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1421,6 +1439,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  textObject: {fileID: 7114280507184257320}
+  textColors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
 --- !u!1 &3823470067672605583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,7 +1754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.4340057, y: -0.5}
+  m_AnchoredPosition: {x: -2.434021, y: -0.5}
   m_SizeDelta: {x: -114.043, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2427549612581557044
@@ -1917,7 +1944,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4143814171074440553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Script: {fileID: 11500000, guid: f795c75dbaf64414191b7f8c57630d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1985,6 +2012,14 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_AlphaFadeSpeed: 0.15
+  textColors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
 --- !u!1 &4306826357291570649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,7 +2161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.0000305, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4617666279237296858
@@ -2387,13 +2422,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4998991781494159958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a334759c2d3de4bb4be76d7782f49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 2692551615590405644}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 6394690727266944933}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -2434,6 +2469,15 @@ MonoBehaviour:
           m_StringArgument: SampleScene
           m_BoolArgument: 0
         m_CallState: 2
+  textObject: {fileID: 7412447284401973961}
+  textColors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
 --- !u!1 &5268775298016322938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,7 +2758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.0000305, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6308148834469994038
@@ -3286,7 +3330,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6658308689935187025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a334759c2d3de4bb4be76d7782f49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -3321,10 +3365,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9002331392078266206}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 3342292032129501021}
+        m_TargetAssemblyTypeName: UIShowHide, PG.Menu
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3345,6 +3389,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  textObject: {fileID: 8728603581085857350}
+  textColors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
 --- !u!1 &6983559264809152495
 GameObject:
   m_ObjectHideFlags: 0
@@ -4152,7 +4205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.264, y: 0.62700003}
   m_AnchorMax: {x: 0.5225263, y: 0.689}
-  m_AnchoredPosition: {x: -1.9999084, y: 0.80000305}
+  m_AnchoredPosition: {x: -1.9998779, y: 0.7999878}
   m_SizeDelta: {x: -6.8710003, y: -6.501999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4597442400952567766
@@ -4288,7 +4341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25979704, y: 0.41065052}
   m_AnchorMax: {x: 0.8867971, y: 0.5}
-  m_AnchoredPosition: {x: 0.16000366, y: 3.9429932}
+  m_AnchoredPosition: {x: 0.15997314, y: 3.9429932}
   m_SizeDelta: {x: -18.559998, y: -8.656998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8279047106643040293
@@ -4673,6 +4726,7 @@ GameObject:
   - component: {fileID: 7301735891837764333}
   - component: {fileID: 8500424292912563700}
   - component: {fileID: 3594204185309029330}
+  - component: {fileID: 3342292032129501021}
   m_Layer: 5
   m_Name: "Settings \u2013 Panel"
   m_TagString: Untagged
@@ -4708,7 +4762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24400002, y: 0.13126257}
   m_AnchorMax: {x: 0.758698, y: 0.7161494}
-  m_AnchoredPosition: {x: -5, y: 0.44000244}
+  m_AnchoredPosition: {x: -5, y: 0.44006348}
   m_SizeDelta: {x: -43.447998, y: -35.401978}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8500424292912563700
@@ -4749,6 +4803,78 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.14
+--- !u!114 &3342292032129501021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9002331392078266206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa150b95269986a44b9c719640794661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PG.Menu::UIShowHide
+  _playOnEnable: 1
+  _deactivateAfterHide: 1
+  _lockInteractionDuringTween: 1
+  _useIgnoreTimeScale: 1
+  _stopExistingTweens: 0
+  _delayIn: 0
+  _delayOut: 0
+  _durationIn: 0.35
+  _durationOut: 0.3
+  _easeIn:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _easeOut:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _enter: 10
+  _exit: 9
+  _offscreenMargin: 32
 --- !u!1 &9064341538984397696
 GameObject:
   m_ObjectHideFlags: 0

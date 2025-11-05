@@ -338,9 +338,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 570.56604
+    y: 515.77356
     width: 1326.6981
-    height: 313.7736
+    height: 313.77362
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 234.22641}
     m_SelectedIDs: 92e00000
     m_LastClickedID: 57490
-    m_ExpandedIDs: 0000000070df000072df000074df000076df000078df00007adf00007cdf00007edf000080df0000e2df000044e0000000ca9a3bffffff7f
+    m_ExpandedIDs: 0000000078df00007adf00007cdf00007edf000080df000082df000084df000086df000088df0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -411,7 +411,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000070df000072df000074df000076df000078df00007adf00007cdf00007edf000080df0000
+    m_ExpandedIDs: 0000000078df00007adf00007cdf00007edf000080df000082df000084df000086df000088df0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -473,8 +473,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1327.6981
-    y: 78.79246
+    x: 1328.6981
+    y: 24
     width: 410.16992
     height: 805.5472
   m_SerializedDataModeController:
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 78.79246
+    y: 24
     width: 327.75473
     height: 465.7736
   m_SerializedDataModeController:
@@ -588,8 +588,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 328.75473
-    y: 78.79246
+    x: 329.75473
+    y: 24
     width: 996.94336
     height: 465.7736
   m_SerializedDataModeController:
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 598.22845, y: 164.67458, z: -0.5604231}
+    m_Target: {x: 564.0498, y: 146.98775, z: 0.30924964}
     speed: 2
     m_Value: {x: 598.22845, y: 164.67458, z: -0.5604231}
   m_RenderMode: 0
@@ -1086,7 +1086,7 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 235.68835
+    m_Target: 148.72086
     speed: 2
     m_Value: 235.68835
   m_Ortho:

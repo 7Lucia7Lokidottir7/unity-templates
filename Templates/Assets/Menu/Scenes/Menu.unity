@@ -214,7 +214,6 @@ GameObject:
   - component: {fileID: 1299080747}
   - component: {fileID: 1299080746}
   - component: {fileID: 1299080748}
-  - component: {fileID: 1299080749}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -331,31 +330,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!114 &1299080749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299080745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c423fed7cfd44824b9ca853e52abef76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewMode: 1
-  columns: 4
-  itemContainer: {fileID: 0}
-  cellContainer: {fileID: 0}
-  addressableCell:
-    m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  largeIconPanel: {fileID: 0}
-  descriptionPanel: {fileID: 0}
-  _fileName: Inventory.json
 --- !u!1 &1696224926
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +528,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5249231755300070245, guid: e59c1216ffef4b94cb2d53152f984940, type: 3}
+      propertyPath: m_Name
+      value: "Pause \u2013 Canvas"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249231755300070245, guid: e59c1216ffef4b94cb2d53152f984940, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -636,10 +614,6 @@ PrefabInstance:
     - target: {fileID: 7913477226627501108, guid: e59c1216ffef4b94cb2d53152f984940, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5249231755300070245, guid: e59c1216ffef4b94cb2d53152f984940, type: 3}
-      propertyPath: m_Name
-      value: "Pause \u2013 Canvas"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

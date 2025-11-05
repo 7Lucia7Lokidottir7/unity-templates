@@ -10,6 +10,7 @@ namespace PG.BattleSystem
         [SerializeField] private string _dashParameter = "Dash";
 
         [SerializeField] private float _duration = 0.1f;
+        [SerializeField] private float _cooldown = 0.1f;
 
         [SerializeField] private InputActionProperty _dashProperty;
         [SerializeField] private InputActionProperty _moveProperty;
@@ -50,6 +51,8 @@ namespace PG.BattleSystem
             _health.useDamage = false;
             yield return new WaitForSeconds(_duration);
             _health.useDamage = true;
+            yield return new WaitForSeconds(_cooldown);
+            _coroutine = null;
         }
     }
 }
