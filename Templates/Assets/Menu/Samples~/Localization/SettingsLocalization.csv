@@ -1,26 +1,26 @@
 Key,English,Russian,Ukrainian
-sound,,,
-graphics,,,
-camera,,,
-main-menu,,,
-back,,,
-quit,,,
-master_sound,,,
-enviroment,,,
-music,,,
-voice,,,
-effects,,,
-mouse-x-sensitive,,,
-mouse-y-sensitive,,,
-gamepad-x-sensitive,,,
-gamepad-y-sensitive,,,
-Fullscreen,,,
-Screen Resolution,,,
-Texture Resolution,,,
-anti-aliasing,,,
-Render Scale,,,
-LOD,,,
-post-processing,,,
-shadow-distance,,,
-shadow-quality,,,
-v-sync,,,
+sound,Sound,Звук,Звук
+graphics,Graphics,Графика,Графіка
+camera,Camera,Камера,Камера
+main-menu,Main Menu,Главное меню,Головне меню
+back,Back,Назад,Назад
+quit,Quit,Выйти,Вийти
+master_sound,Master Sound,Общий звук,Загальний звук
+enviroment,Environment,Окружение,Оточення
+music,Music,Музыка,Музика
+voice,Voice,Голос,Голос
+effects,Effects,Эффекты,Ефекти
+mouse-x-sensitive,Mouse X Sensitivity,Чувствительность мыши по X,Чутливість миші по X
+mouse-y-sensitive,Mouse Y Sensitivity,Чувствительность мыши по Y,Чутливість миші по Y
+gamepad-x-sensitive,Gamepad X Sensitivity,Чувствительность геймпада по X,Чутливість геймпада по X
+gamepad-y-sensitive,Gamepad Y Sensitivity,Чувствительность геймпада по Y,Чутливість геймпада по Y
+Fullscreen,Fullscreen,Полноэкранный режим,Повноекранний режим
+Screen Resolution,Screen Resolution,Разрешение экрана,Роздільна здатність екрана
+Texture Resolution,Texture Resolution,Разрешение текстур,Роздільна здатність текстур
+anti-aliasing,Anti-Aliasing,Сглаживание,Згладжування
+Render Scale,Render Scale,Масштаб рендера,Масштаб рендера
+LOD,Level of Detail (LOD),Уровень детализации (LOD),Рівень деталізації (LOD)
+post-processing,Post-Processing,Постобработка,Постобробка
+shadow-distance,Shadow Distance,Дистанция теней,Дистанція тіней
+shadow-quality,Shadow Quality,Качество теней,Якість тіней
+v-sync,V-Sync,Вертикальная синхронизация,Вертикальна синхронізація
