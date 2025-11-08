@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PG.QuestSystem
 {
-    [CreateAssetMenu(menuName = "PG/Quest System/")]
+    [CreateAssetMenu(menuName = "PG/Quest System/Quest Line")]
     public class QuestLine : ScriptableObject
     {
         public string _nameQuest;
