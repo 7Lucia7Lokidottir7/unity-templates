@@ -1,6 +1,6 @@
 {
-    "name": "PG.Menu.Editor",
-    "rootNamespace": "PG.Menu.Editor",
+    "name": "PG.MenuManagement.Editor",
+    "rootNamespace": "PG.MenuManagement.Editor",
     "references": [
         "GUID:a6850bf06e4cc274d95cec0470bd7189",
         "GUID:6546d7765b4165b40850b3667f981c26",

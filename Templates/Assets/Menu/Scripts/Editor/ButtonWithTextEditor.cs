@@ -1,6 +1,6 @@
 using TMPro;
 
-namespace PG.Menu.Editor
+namespace PG.MenuManagement.Editor
 {
 using UnityEditor.UI;
 using UnityEditor;

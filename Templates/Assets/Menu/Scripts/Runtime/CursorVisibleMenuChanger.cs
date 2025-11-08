@@ -1,37 +1,40 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CursorVisibleMenuChanger : MonoBehaviour
+namespace PG.MenuManagement
 {
-    private void OnDisable()
+    public class CursorVisibleMenuChanger : MonoBehaviour
     {
-        HideCursor();
-    }
-    private void LateUpdate()
-    {
-        // Проверка движения мыши
-        if (Mouse.current.delta.ReadValue() != Vector2.zero)
-        {
-            ShowCursor();
-        }
-
-        // Можно также добавить проверку ввода с геймпада для скрытия курсора
-        if (Gamepad.current != null && Gamepad.current.IsActuated())
+        private void OnDisable()
         {
             HideCursor();
         }
+        private void LateUpdate()
+        {
+            // Проверка движения мыши
+            if (Mouse.current.delta.ReadValue() != Vector2.zero)
+            {
+                ShowCursor();
+            }
+
+            // Можно также добавить проверку ввода с геймпада для скрытия курсора
+            if (Gamepad.current != null && Gamepad.current.IsActuated())
+            {
+                HideCursor();
+            }
+        }
+
+        private void HideCursor()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        private void ShowCursor()
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
-    private void HideCursor()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private void ShowCursor()
-    {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
 }

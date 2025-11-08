@@ -1,5 +1,5 @@
 
-namespace PG.Menu.Editor
+namespace PG.MenuManagement.Editor
 {
     using UnityEditor;
     using TMPro.EditorUtilities;
