@@ -1,5 +1,9 @@
-using UnityEditor;
-using TMPro.EditorUtilities;
+
+namespace PG.Menu.Editor
+{
+    using UnityEditor;
+    using TMPro.EditorUtilities;
+
 [CustomEditor(typeof(TMP_DropdownWithText))]
 public class TMP_DropdownWithTextEditor : DropdownEditor
 {
@@ -24,4 +28,6 @@ public class TMP_DropdownWithTextEditor : DropdownEditor
         serializedObject.ApplyModifiedProperties();
     }
 }
+}
+
 

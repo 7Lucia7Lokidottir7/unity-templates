@@ -1,4 +1,7 @@
 using TMPro;
+
+namespace PG.Menu.Editor
+{
 using UnityEditor.UI;
 using UnityEditor;
 
@@ -27,5 +30,6 @@ public class ButtonWithTextEditor : ButtonEditor
 
         serializedObject.ApplyModifiedProperties();
     }
+}
 }
 
