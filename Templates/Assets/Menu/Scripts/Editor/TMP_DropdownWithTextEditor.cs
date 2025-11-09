@@ -4,7 +4,7 @@ namespace PG.MenuManagement.Editor
     using UnityEditor;
     using TMPro.EditorUtilities;
 
-[CustomEditor(typeof(TMP_DropdownWithText))]
+[CustomEditor(typeof(TMP_DropdownWithText)), CanEditMultipleObjects]
 public class TMP_DropdownWithTextEditor : DropdownEditor
 {
     private TMP_DropdownWithText _dropdown;

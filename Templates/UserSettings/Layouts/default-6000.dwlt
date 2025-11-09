@@ -363,7 +363,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/QuestSystem
+    - Assets/Menu
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -373,15 +373,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/QuestSystem
+  - Assets/Menu
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Git Projects\unity-templates\Templates
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 170.22641}
-    m_SelectedIDs: 38e00000
-    m_LastClickedID: 57400
+    scrollPos: {x: 0, y: 319}
+    m_SelectedIDs: 84df0000
+    m_LastClickedID: 57220
     m_ExpandedIDs: 000000007edf000080df000082df000084df000086df000088df00008adf00008cdf00008edf000090df000092df000094df000096df000098df00009adf0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

@@ -5,7 +5,7 @@ namespace PG.MenuManagement.Editor
 using UnityEditor.UI;
 using UnityEditor;
 
-[CustomEditor(typeof(ButtonWithText))]
+[CustomEditor(typeof(ButtonWithText)), CanEditMultipleObjects]
 public class ButtonWithTextEditor : ButtonEditor
 {
     private ButtonWithText _btn;
