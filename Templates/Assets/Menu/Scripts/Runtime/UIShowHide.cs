@@ -86,12 +86,27 @@ namespace PG.MenuManagement
             PrepareEnterState();
             PlayEnter();
         }
+        public void Show(Action endAnimation)
+        {
+            gameObject.SetActive(true);
+            PrepareEnterState();
+            PlayEnter(endAnimation);
+        }
 
         public void Hide()
         {
             PlayExit(() =>
             {
                 if (_deactivateAfterHide) gameObject.SetActive(false);
+            });
+        }
+
+        public void Hide(Action endAnimation)
+        {
+            PlayExit(() =>
+            {
+                if (_deactivateAfterHide) gameObject.SetActive(false);
+                endAnimation?.Invoke();
             });
         }
 
@@ -102,7 +117,7 @@ namespace PG.MenuManagement
             ForceLayoutNow();
 
             if (_stopExistingTweens) this.StopAllTweens();              // твой метод, глобально стопает твины :contentReference[oaicite:1]{index=1}
-            if (_lockInteractionDuringTween) _cg.DisableUITween();       // выключаем клики на время входа :contentReference[oaicite:2]{index=2}
+            if (_lockInteractionDuringTween) _cg?.DisableUITween();       // выключаем клики на время входа :contentReference[oaicite:2]{index=2}
 
             switch (_enter)
             {
@@ -139,7 +154,7 @@ namespace PG.MenuManagement
         }
 
         // ========== Запуск входа ==========
-        async void PlayEnter()
+        async void PlayEnter(Action endAnimation = null)
         {
             if (_delayIn > 0f)
                 await PGTween.Delay(_delayIn, _useIgnoreTimeScale);      // пауза перед входом :contentReference[oaicite:3]{index=3}
@@ -152,29 +167,37 @@ namespace PG.MenuManagement
                     _useIgnoreTimeScale,
                     v => _rt.anchoredPosition = v,
                     _easeIn,
-                    () => { if (_lockInteractionDuringTween) _cg.EnableUITween(); }     // вернуть взаимодействие :contentReference[oaicite:4]{index=4}
+                    () => { if (_lockInteractionDuringTween) _cg?.EnableUITween();
+                        endAnimation?.Invoke();
+                    }     // вернуть взаимодействие :contentReference[oaicite:4]{index=4}
                 );
 
                 if (_enter.ToString().EndsWith("AndFade"))
                 {
-                    _cg.OnAlphaTween(1f, _durationIn, _useIgnoreTimeScale, _easeIn);      // альфа через твой CanvasGroup-тиннер :contentReference[oaicite:5]{index=5}
+                    _cg?.OnAlphaTween(1f, _durationIn, _useIgnoreTimeScale, _easeIn);      // альфа через твой CanvasGroup-тиннер :contentReference[oaicite:5]{index=5}
                 }
             }
             else if (_enter == EnterMode.ScaleIn)
             {
                 _rt.transform.OnTransformScaleTween(Vector3.one, _durationIn, _useIgnoreTimeScale, _easeIn,
-                    () => { if (_lockInteractionDuringTween) _cg.EnableUITween(); });
+                    () => { if (_lockInteractionDuringTween) _cg?.EnableUITween();
+                        endAnimation?.Invoke();
+                    });
             }
             else if (_enter == EnterMode.FadeIn)
             {
-                _cg.OnAlphaTween(1f, _durationIn, _useIgnoreTimeScale, _easeIn,
-                    () => { if (_lockInteractionDuringTween) _cg.EnableUITween(); });
+                _cg?.OnAlphaTween(1f, _durationIn, _useIgnoreTimeScale, _easeIn,
+                    () => { if (_lockInteractionDuringTween) _cg?.EnableUITween();
+                        endAnimation?.Invoke();
+                    });
             }
             else if (_enter == EnterMode.PopIn)
             {
                 _rt.transform.OnTransformScaleTween(Vector3.one, _durationIn, _useIgnoreTimeScale, _easeIn, null);
-                _cg.OnAlphaTween(1f, _durationIn * 0.9f, _useIgnoreTimeScale, _easeIn,
-                    () => { if (_lockInteractionDuringTween) _cg.EnableUITween(); });
+                _cg?.OnAlphaTween(1f, _durationIn * 0.9f, _useIgnoreTimeScale, _easeIn,
+                    () => { if (_lockInteractionDuringTween) _cg?.EnableUITween();
+                        endAnimation?.Invoke();
+                    });
             }
         }
 
@@ -182,7 +205,7 @@ namespace PG.MenuManagement
         async void PlayExit(Action onComplete)
         {
             if (_stopExistingTweens) this.StopAllTweens();
-            if (_lockInteractionDuringTween) _cg.DisableUITween();
+            if (_lockInteractionDuringTween) _cg?.DisableUITween();
 
             if (_delayOut > 0f)
                 await PGTween.Delay(_delayOut, _useIgnoreTimeScale);
@@ -197,7 +220,7 @@ namespace PG.MenuManagement
                     _easeOut,
                     () =>
                     {
-                        if (_lockInteractionDuringTween) _cg.EnableUITween();
+                        if (_lockInteractionDuringTween) _cg?.EnableUITween();
                         onComplete?.Invoke();
                     }
                 );
@@ -205,7 +228,7 @@ namespace PG.MenuManagement
                 // Компаньонная альфа для вариантов "*AndFade"
                 if (_exit.ToString().EndsWith("AndFade"))
                 {
-                    _cg.OnAlphaTween(0f, _durationOut, _useIgnoreTimeScale, _easeOut);
+                    _cg?.OnAlphaTween(0f, _durationOut, _useIgnoreTimeScale, _easeOut);
                 }
             }
             else if (_exit == ExitMode.ScaleOut)
@@ -213,23 +236,23 @@ namespace PG.MenuManagement
                 _rt.transform.OnTransformScaleTween(Vector3.one * 0.1f, _durationOut, _useIgnoreTimeScale, _easeOut,
                     () =>
                     {
-                        if (_lockInteractionDuringTween) _cg.EnableUITween();
+                        if (_lockInteractionDuringTween) _cg?.EnableUITween();
                         onComplete?.Invoke();
                     });
             }
             else if (_exit == ExitMode.FadeOut)
             {
-                _cg.OnAlphaTween(0f, _durationOut, _useIgnoreTimeScale, _easeOut,
+                _cg?.OnAlphaTween(0f, _durationOut, _useIgnoreTimeScale, _easeOut,
                     () =>
                     {
-                        if (_lockInteractionDuringTween) _cg.EnableUITween();
+                        if (_lockInteractionDuringTween) _cg?.EnableUITween();
                         onComplete?.Invoke();
                     });
             }
             else if (_exit == ExitMode.PopOut)
             {
                 _rt.transform.OnTransformScaleTween(Vector3.one * 0.85f, _durationOut, _useIgnoreTimeScale, _easeOut, onComplete);
-                _cg.OnAlphaTween(0f, _durationOut * 0.9f, _useIgnoreTimeScale, _easeOut);
+                _cg?.OnAlphaTween(0f, _durationOut * 0.9f, _useIgnoreTimeScale, _easeOut);
             }
         }
 
