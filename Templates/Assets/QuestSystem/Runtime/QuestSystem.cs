@@ -21,6 +21,11 @@ namespace PG.QuestSystem
         public event System.Action<QuestLine> displayedQuest;
         private void Awake()
         {
+            for (int i = 0; i < questLines.Length; i++)
+            {
+                questLines[i] = Instantiate(questLines[i]);
+            }
+
             _watchButton.onClick.AddListener(WatchQuest);
             for (int i = 0; i < _cellContainer.childCount; i++)
             {
@@ -30,6 +35,37 @@ namespace PG.QuestSystem
                     DisplayQuestText();
                     _selectedQuest = i;
                 });
+            }
+        }
+        public void ActivateQuest(QuestLine questLine)
+        {
+            questLine.StartQuest();
+            questStarted?.Invoke(questLine);
+        }
+        public void ActivateQuest(int questLineID)
+        {
+            questLines[questLineID].StartQuest();
+            questStarted?.Invoke(questLines[questLineID]);
+        }
+        public void NextQuest(QuestLine questLine)
+        {
+            if (questLine.NextQuest())
+            {
+                questCompleted?.Invoke(questLine);
+            }
+        }
+        public void NextQuest(int questLineID)
+        {
+            if (questLines[questLineID].NextQuest())
+            {
+                questCompleted?.Invoke(questLines[questLineID]);
+            }
+        }
+        public void NextTargetQuest()
+        {
+            if (targetQuestLine.NextQuest())
+            {
+                questCompleted?.Invoke(targetQuestLine);
             }
         }
         public void DisplayCells()
