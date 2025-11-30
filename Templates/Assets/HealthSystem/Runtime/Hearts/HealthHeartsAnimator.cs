@@ -73,11 +73,11 @@ namespace PG.HealthSystem
             }
 
             _value -= (int)damage;
-
+            _value = Mathf.Clamp(_value, 0, _maxValue);
 
             damaged?.Invoke(damage);
 
-            if (_deathObject != null && _deathObject.TryGetComponent(out IDeath death))
+            if (_value == 0 && _deathObject != null && _deathObject.TryGetComponent(out IDeath death))
                 death.OnDeath();
         }
 
