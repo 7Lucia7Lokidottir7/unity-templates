@@ -30,7 +30,7 @@ namespace PG.HealthSystem
         public event Action<float> healed;
 
         [SerializeField] private int _maxValue = 4;
-        private int _value;
+        [SerializeField] private int _value = 4;
 
         private Coroutine _animRoutine;
         private Coroutine _damageCooldownCoroutine;
