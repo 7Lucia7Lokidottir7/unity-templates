@@ -26,6 +26,7 @@ namespace PG.HealthSystem
         public void OnDamage(float damage, bool ignoreDamage = false)
         {
             damagable?.OnDamage(damage, ignoreDamage);
+            damaged.Invoke(damage);
         }
     }
 }
