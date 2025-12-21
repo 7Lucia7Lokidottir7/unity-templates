@@ -6,7 +6,6 @@ namespace PG.HealthSystem
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private string _damageTrigger = "Damage";
-
         [SerializeField] private GameObject _damagableObject;
         public IDamagable damagable;
         private void OnValidate()

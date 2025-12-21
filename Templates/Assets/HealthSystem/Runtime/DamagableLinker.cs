@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PG.HealthSystem
 {
@@ -8,6 +9,7 @@ namespace PG.HealthSystem
         [SerializeField] private GameObject _damagableObject;
         public IDamagable damagable;
 
+        [SerializeField] private UnityEvent _damageEvent;
         public event Action<float> damaged;
 
         private void OnValidate()
@@ -26,6 +28,7 @@ namespace PG.HealthSystem
         public void OnDamage(float damage, bool ignoreDamage = false)
         {
             damagable?.OnDamage(damage, ignoreDamage);
+            _damageEvent?.Invoke();
             damaged.Invoke(damage);
         }
     }

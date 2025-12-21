@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace PG.HealthSystem
@@ -20,6 +21,7 @@ namespace PG.HealthSystem
 
         [Space(10)]
         public bool useDamage;
+        [SerializeField] private UnityEvent _damageEvent;
         [SerializeField] private GameObject _deathObject;
 
         public event Action<float> damaged;
@@ -55,6 +57,7 @@ namespace PG.HealthSystem
             }
 
             _healthSlider.value -= damage;
+            _damageEvent?.Invoke();
             damaged?.Invoke(damage);
             if (_hitCoroutine != null)
             {
