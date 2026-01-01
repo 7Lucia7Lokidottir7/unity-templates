@@ -8,12 +8,12 @@ namespace PG.InteractSystem
 
         private void OnEnable()
         {
-            IInteractable.visibleInteracted += OnVisible;
+            IInteractVisible.visibleInteracted += OnVisible;
         }
 
         private void OnDisable()
         {
-            IInteractable.visibleInteracted -= OnVisible;
+            IInteractVisible.visibleInteracted -= OnVisible;
         }
         void OnVisible(bool value)
         {
