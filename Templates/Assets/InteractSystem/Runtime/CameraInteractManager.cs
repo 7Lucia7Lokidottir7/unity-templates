@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 namespace PG.InteractSystem
 {
-    public class CameraInteractManager : MonoBehaviour
+    public class CameraInteractManager : MonoBehaviour, IInteractVisible
     {
         public InputActionProperty interactProperty { get; set; }
         private Camera _camera;
         [SerializeField] private float _targetDistance = 3f;
         private Ray _ray;
         private RaycastHit _hit;
+
 
         private void Awake()
         {
@@ -26,8 +27,6 @@ namespace PG.InteractSystem
         {
             if (_hit.collider != null && _hit.collider.TryGetComponent(out IInteractable interactable))
             {
-                IInteractable.isInteractActive = false;
-                IInteractable.visibleInteracted?.Invoke(false);
                 interactable.OnInteract();
             }
         }
@@ -43,19 +42,19 @@ namespace PG.InteractSystem
             {
                 if (_hit.collider.TryGetComponent(out IInteractable interactable))
                 {
-                    IInteractable.isInteractActive = true;
-                    IInteractable.visibleInteracted?.Invoke(true);
+                    IInteractVisible.isInteractActive = true;
+                    IInteractVisible.visibleInteracted?.Invoke(true);
                 }
                 else
                 {
-                    IInteractable.isInteractActive = false;
-                    IInteractable.visibleInteracted?.Invoke(false);
+                    IInteractVisible.isInteractActive = false;
+                    IInteractVisible.visibleInteracted?.Invoke(false);
                 }
             }
             else
             {
-                IInteractable.isInteractActive = false;
-                IInteractable.visibleInteracted?.Invoke(false);
+                IInteractVisible.isInteractActive = false;
+                IInteractVisible.visibleInteracted?.Invoke(false);
             }
         }
     }

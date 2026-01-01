@@ -4,11 +4,10 @@ using UnityEngine.InputSystem;
 
 namespace PG.InteractSystem
 {
-    public class TriggerInteractManager : MonoBehaviour
+    public class TriggerInteractManager : MonoBehaviour, IInteractVisible
     {
         [SerializeField] private InputActionProperty _interactProperty;
         private List<IInteractable> _interactables = new List<IInteractable>();
-        public event System.Action<bool> visibled;
         public static TriggerInteractManager instance;
         private void Awake()
         {
@@ -37,7 +36,7 @@ namespace PG.InteractSystem
         {
             if(_interactables.Count == 0)
             {
-                visibled?.Invoke(true);
+                IInteractVisible.visibleInteracted?.Invoke(true);
             }
 
             _interactables.Add(interactable);
@@ -48,7 +47,7 @@ namespace PG.InteractSystem
 
             if (_interactables.Count == 0)
             {
-                visibled?.Invoke(false);
+                IInteractVisible.visibleInteracted?.Invoke(false);
             }
         }
     }
