@@ -31,25 +31,25 @@ namespace PG.MenuManagement
         {
             isPause = false;
             isPauseEnable = true;
-            UIManager.RegisterClose(this.gameObject);
+            UIManager.RegisterClose(_panel.gameObject);
         }
 
         void InputChangePause(InputAction.CallbackContext context) => ChangePause();
 
         public void ChangePause()
         {
-            if (!isPauseEnable) return;
+            if (!isPauseEnable || UIManager.IsAnyPanelOpen) return;
 
             if (!isPause)
             {
                 // Пытаемся открыть: если UIManager занят другой панелью, ничего не делаем
-                if (!UIManager.RequestOpen(this.gameObject)) return;
+                if (!UIManager.RequestOpen(_panel.gameObject)) return;
 
                 OpenPause();
             }
             else
             {
-                if (!UIManager.RegisterClose(this.gameObject)) return;
+                if (!UIManager.RegisterClose(_panel.gameObject)) return;
                 ClosePause();
             }
         }
@@ -80,7 +80,7 @@ namespace PG.MenuManagement
             isPause = false;
             Time.timeScale = _standardTime;
 
-            UIManager.RegisterClose(this.gameObject);
+            UIManager.RegisterClose(_panel.gameObject);
 
             if (_uiShowHide)
             {
