@@ -11,10 +11,11 @@ namespace PG.MenuManagement
         [SerializeField] private Button _selectButton;
         [SerializeField] private CanvasGroup _panel;
 
-        // Ссылка на компонент анимации, если он есть
         private UIShowHide _uiShowHide;
 
-        public static bool isPause;
+        // УБРАНО static: теперь у каждой панели своя переменная состояния
+        private bool _isCurrentPanelActive;
+
         public static bool isPauseEnable { set; get; } = true;
         private float _standardTime = 1f;
 
@@ -29,34 +30,45 @@ namespace PG.MenuManagement
 
         private void OnDestroy()
         {
-            isPause = false;
-            isPauseEnable = true;
-            UIManager.RegisterClose(_panel.gameObject);
+            // Если объект удален, принудительно очищаем регистрацию в менеджере
+            if (_isCurrentPanelActive)
+            {
+                UIManager.RegisterClose(_panel.gameObject);
+            }
         }
 
         void InputChangePause(InputAction.CallbackContext context) => ChangePause();
 
         public void ChangePause()
         {
-            if (!isPauseEnable || UIManager.IsAnyPanelOpen) return;
+            if (!isPauseEnable) return;
 
-            if (!isPause)
+            // Логика открытия
+            if (!_isCurrentPanelActive)
             {
-                // Пытаемся открыть: если UIManager занят другой панелью, ничего не делаем
-                if (!UIManager.RequestOpen(_panel.gameObject)) return;
+                // Если какая-то ДРУГАЯ панель уже открыта — игнорируем ввод
+                if (UIManager.IsAnyPanelOpen) return;
 
-                OpenPause();
+                // Пытаемся занять место в UIManager
+                if (UIManager.RequestOpen(_panel.gameObject))
+                {
+                    OpenPause();
+                }
             }
+            // Логика закрытия
             else
             {
-                if (!UIManager.RegisterClose(_panel.gameObject)) return;
-                ClosePause();
+                // Закрываем, только если мы сами открыты
+                if (UIManager.RegisterClose(_panel.gameObject))
+                {
+                    ClosePause();
+                }
             }
         }
 
         private void OpenPause()
         {
-            isPause = true;
+            _isCurrentPanelActive = true;
             _standardTime = Time.timeScale;
             Time.timeScale = 0f;
 
@@ -69,7 +81,6 @@ namespace PG.MenuManagement
 
             _selectButton.Select();
 
-            // Настройка CanvasGroup
             _panel.interactable = true;
             _panel.blocksRaycasts = true;
             _panel.OnAlphaTween(1f, 0.25f, true);
@@ -77,10 +88,8 @@ namespace PG.MenuManagement
 
         private void ClosePause()
         {
-            isPause = false;
+            _isCurrentPanelActive = false;
             Time.timeScale = _standardTime;
-
-            UIManager.RegisterClose(_panel.gameObject);
 
             if (_uiShowHide)
             {
