@@ -49,6 +49,7 @@ namespace PG.MenuManagement
             }
             else
             {
+                if (!UIManager.RegisterClose(this.gameObject)) return;
                 ClosePause();
             }
         }

@@ -22,13 +22,15 @@ namespace PG.MenuManagement
             return true;
         }
 
-        public static void RegisterClose(GameObject panel)
+        public static bool RegisterClose(GameObject panel)
         {
             if (_currentActivePanel == panel)
             {
                 _currentActivePanel = null;
                 OnStateChanged?.Invoke(false); // Оповещаем, что всё закрыто
+                return true;
             }
+            return false;
         }
     }
 }
