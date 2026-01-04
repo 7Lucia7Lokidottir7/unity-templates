@@ -14,7 +14,7 @@ namespace PG.HealthSystem
 
         private void OnValidate()
         {
-            if (_damagableObject.GetComponent<IDamagable>() == null)
+            if (_damagableObject != null && _damagableObject.GetComponent<IDamagable>() == null)
             {
                 _damagableObject = null;
                 Debug.LogError("DamagableObject haven't interface IDamagable!");
