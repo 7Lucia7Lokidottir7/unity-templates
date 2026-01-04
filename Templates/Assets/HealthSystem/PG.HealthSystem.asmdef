@@ -2,7 +2,8 @@
     "name": "PG.HealthSystem",
     "rootNamespace": "PG.HealthSystem",
     "references": [
-        "GUID:2bafac87e7f4b9b418d9448d219b01ab"
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:a6850bf06e4cc274d95cec0470bd7189"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
