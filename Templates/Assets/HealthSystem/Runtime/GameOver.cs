@@ -8,7 +8,6 @@ namespace PG.HealthSystem
     public class GameOver : MonoBehaviour, IDeath
     {
         [SerializeField] private CanvasGroup _canvasGroup;
-        [SerializeField] private UIShowHide _showHide;
         [SerializeField] private float _transitionDuration = 0.25f;
         [SerializeField] private Selectable _targetSelectable;
 
