@@ -23,5 +23,16 @@ namespace PG.Localization
                 _languageElements[i].gameObject.SetActive(_languageElements[i].language == LocalizationSystem.instance.currentLanguage);
             }
         }
+        public GameObject GetLocalizedObject()
+        {
+            for (int i = 0; i < _languageElements.Length; i++)
+            {
+                if (_languageElements[i].language == LocalizationSystem.instance.currentLanguage)
+                {
+                    return _languageElements[i].gameObject;
+                }
+            }
+            return null;
+        }
     }
 }

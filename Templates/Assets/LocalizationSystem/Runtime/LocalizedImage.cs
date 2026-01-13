@@ -25,5 +25,16 @@ namespace PG.Localization
             }
             _imageObject.sprite = _languageElements[0].sprite;
         }
+        public Sprite GetLocalizedValue()
+        {
+            for (int i = 0; i < _languageElements.Length; i++)
+            {
+                if (_languageElements[i].language == LocalizationSystem.instance.currentLanguage)
+                {
+                    return _languageElements[i].sprite;
+                }
+            }
+            return _languageElements[0].sprite;
+        }
     }
 }
