@@ -28,7 +28,7 @@ namespace PG.HealthSystem
         {
             damagable.damaged -= OnDamage;
         }
-        void OnDamage(float damage)
+        void OnDamage(float damage, GameObject damageObject)
         {
             _animator?.SetTrigger(_damageTrigger);
         }

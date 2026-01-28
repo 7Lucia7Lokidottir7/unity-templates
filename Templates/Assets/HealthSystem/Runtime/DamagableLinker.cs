@@ -10,7 +10,7 @@ namespace PG.HealthSystem
         public IDamagable damagable;
 
         [SerializeField] private UnityEvent _damageEvent;
-        public event Action<float> damaged;
+        public event Action<float, GameObject> damaged;
 
         private void OnValidate()
         {
@@ -25,11 +25,11 @@ namespace PG.HealthSystem
             _damagableObject.TryGetComponent(out damagable);
         }
 
-        public void OnDamage(float damage, bool ignoreDamage = false)
+        public void OnDamage(float damage, bool ignoreDamage = false, GameObject damageObject = null)
         {
             damagable?.OnDamage(damage, ignoreDamage);
             _damageEvent?.Invoke();
-            damaged.Invoke(damage);
+            damaged.Invoke(damage, damageObject);
         }
     }
 }

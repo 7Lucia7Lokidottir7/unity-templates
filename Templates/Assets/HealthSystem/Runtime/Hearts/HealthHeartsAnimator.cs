@@ -26,7 +26,7 @@ namespace PG.HealthSystem
         [SerializeField] private GameObject _deathObject;
 
         [SerializeField] private UnityEvent _damageEvent;
-        public event Action<float> damaged;
+        public event Action<float, GameObject> damaged;
         public event Action<float> healed;
 
         [SerializeField] private int _maxValue = 4;
@@ -63,7 +63,7 @@ namespace PG.HealthSystem
             SetMaxUI();
         }
 
-        public void OnDamage(float damage, bool ignoreDamage = false)
+        public void OnDamage(float damage, bool ignoreDamage = false, GameObject damageObject = null)
         {
             if (!ignoreDamage && !useDamage) return;
             if (_value <= 0) return; // Уже мертвы
@@ -90,7 +90,7 @@ namespace PG.HealthSystem
 
             _value = targetValue;
             _damageEvent?.Invoke();
-            damaged?.Invoke(damage);
+            damaged?.Invoke(damage, damageObject);
 
             if (_value == 0 && _deathObject != null && _deathObject.TryGetComponent(out IDeath death))
                 death.OnDeath();

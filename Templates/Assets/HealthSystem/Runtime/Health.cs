@@ -24,7 +24,7 @@ namespace PG.HealthSystem
         [SerializeField] private UnityEvent _damageEvent;
         [SerializeField] private GameObject _deathObject;
 
-        public event Action<float> damaged;
+        public event Action<float, GameObject> damaged;
         public event Action<float> healed;
 
         private void OnDestroy()
@@ -40,7 +40,7 @@ namespace PG.HealthSystem
             _healthSlider.maxValue = maxValue;
         }
 
-        public void OnDamage(float damage, bool ignoreDamage = false)
+        public void OnDamage(float damage, bool ignoreDamage = false, GameObject damageObject = null)
         {
             if (!ignoreDamage && !useDamage)
             {
@@ -58,7 +58,7 @@ namespace PG.HealthSystem
 
             _healthSlider.value -= damage;
             _damageEvent?.Invoke();
-            damaged?.Invoke(damage);
+            damaged?.Invoke(damage, damageObject);
             if (_hitCoroutine != null)
             {
                 StopCoroutine(_hitCoroutine);
