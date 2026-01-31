@@ -10,4 +10,5 @@ Methods you can use:<br>
 – OnMaterialValueTween<br>
 – OnColorTween<br>
 – OnTransformTween<br>
+– OnAnimatorFloatTween<br>
 – OnValueTween

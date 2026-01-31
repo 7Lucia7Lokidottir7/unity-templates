@@ -614,6 +614,42 @@ namespace PG.Tween
             ended?.Invoke();
         }
 
+        public static async void OnAnimatorFloatTween(this Animator animator, string parameter, float to, float time, bool useIgnoreTimeScale = false, AnimationCurve animationCurve = null, System.Action ended = null)
+        {
+            if (isStopTween || !Application.isPlaying)
+            {
+                return;
+            }
+            if (animationCurve == null)
+            {
+                animationCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+            }
+            float elapsedTime = 0f;
+            float from = animator.GetFloat(parameter);
+            while (elapsedTime < time)
+            {
+                if (isStopTween || !Application.isPlaying)
+                {
+                    return;
+                }
+                if (!animator)
+                {
+                    return;
+                }
+                animator.SetFloat(parameter, Mathf.LerpUnclamped(from, to, animationCurve.Evaluate(elapsedTime / time)));
+                if (useIgnoreTimeScale)
+                {
+                    elapsedTime += Time.unscaledDeltaTime;
+                }
+                else
+                {
+                    elapsedTime += Time.deltaTime;
+                }
+                await Task.Yield();
+            }
+            animator.SetFloat(parameter, to);
+            ended?.Invoke();
+        }
         public static async void OnValueTween(float from, float to, float time, bool useIgnoreTimeScale = false, System.Action<float> onUpdate = default, AnimationCurve animationCurve = null, System.Action ended = null)
         {
             if (isStopTween || !Application.isPlaying)
