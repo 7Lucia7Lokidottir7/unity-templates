@@ -46,9 +46,16 @@ namespace PG.MenuManagement
                 audioSource.resource = resource;
                 audioSource.Play();
 
-                AudioClip audioClip = resource as AudioClip;
 
-                Destroy(audioSource.gameObject, audioClip.length);
+                if (resource is AudioClip clip)
+                {
+                    Destroy(audioSource.gameObject, clip.length);
+                }
+                else
+                {
+                    Destroy(audioSource.gameObject, 10f);
+                }
+
             }
         }
     }
