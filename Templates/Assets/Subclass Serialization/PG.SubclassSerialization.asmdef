@@ -1,11 +1,7 @@
 {
-    "name": "PG.LocomotionSystem",
-    "rootNamespace": "PG.LocomotionSystem",
-    "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:65ecf2a43435d594f84ed8686733c6f7",
-        "GUID:0bb184893f84e974b97cf5b841069deb"
-    ],
+    "name": "PG.SubclassSerialization",
+    "rootNamespace": "PG",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

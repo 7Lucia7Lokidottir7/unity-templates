@@ -53,7 +53,20 @@ namespace PG.TemplatesPackageManager
                 new GitPackage {
                     name      = "Locomotion System",
                     url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/LocomotionSystem",
-                    packageId = "com.pg.locomotion-system"
+                    packageId = "com.pg.locomotion-system",
+                    dependencies = new List<GitPackage>
+                    {
+                        new GitPackage {
+                            name      = "PG Module Management",
+                            url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/Module%20Management",
+                            packageId = "com.pg.module-management"
+                        },
+                        new GitPackage {
+                            name      = "PG Subclass Serialization",
+                            url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/Subclass%20Serialization",
+                            packageId = "com.pg.subclass-serialization"
+                        }
+                    }
                 },
                 new GitPackage {
                     name      = "VFX Control",
@@ -113,6 +126,16 @@ namespace PG.TemplatesPackageManager
                     name      = "PG Hierarchy Folder Creator",
                     url       = "https://github.com/7Lucia7Lokidottir7/PG-Hierarchy-Folder-Creator.git?path=/Hierarchy%20Folder%20Creator/Assets/PG%20Hierarchy%20Folder%20Creator",
                     packageId = "com.pg.hierarchy-folder-creator"
+                },
+                new GitPackage {
+                    name      = "PG Module Management",
+                    url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/Module%20Management",
+                    packageId = "com.pg.module-management"
+                },
+                new GitPackage {
+                    name      = "PG Subclass Serialization",
+                    url       = "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/Subclass%20Serialization",
+                    packageId = "com.pg.subclass-serialization"
                 }
             };
     }
