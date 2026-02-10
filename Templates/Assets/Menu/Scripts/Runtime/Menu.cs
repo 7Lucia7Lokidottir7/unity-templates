@@ -17,6 +17,7 @@ namespace PG.MenuManagement
         // Start is called before the first frame update
         void Awake()
         {
+            Time.timeScale = 1.0f;
             OnChangeCursorVisible(_cursorVisibleOnAwake);
         }
         public void NewGame(string sceneID)
@@ -49,7 +50,7 @@ namespace PG.MenuManagement
             }
             else
             {
-                SceneManager.LoadSceneAsync(sceneID);
+                SceneManager.LoadScene(sceneID);
             }
         }
         public void Restart()
@@ -62,7 +63,7 @@ namespace PG.MenuManagement
             }
             else
             {
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
         public void OnQuit()

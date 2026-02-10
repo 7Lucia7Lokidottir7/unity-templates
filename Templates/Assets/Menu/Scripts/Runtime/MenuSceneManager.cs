@@ -8,12 +8,12 @@ namespace PG.MenuManagement
 
         public virtual void LoadScene(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
         {
-            SceneManager.LoadSceneAsync(sceneName, loadSceneMode);
+            SceneManager.LoadScene(sceneName, loadSceneMode);
         }
 
         public virtual void UnloadScene(string sceneName)
         {
-            SceneManager.UnloadSceneAsync(sceneName);
+            SceneManager.UnloadScene(sceneName);
         }
     }
 
