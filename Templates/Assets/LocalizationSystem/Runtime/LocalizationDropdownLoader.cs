@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -9,8 +10,9 @@ namespace PG.Localization
         [SerializeField] private LocalizationChanger _localizationChanger;
         [SerializeField] private string _localizationParameter = "Language";
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        IEnumerator Start()
         {
+            yield return null;
             if (PlayerPrefs.HasKey(_localizationParameter))
             {
                 _localizationDropdown.value = _localizationChanger.languageIDs[PlayerPrefs.GetString(_localizationParameter)];

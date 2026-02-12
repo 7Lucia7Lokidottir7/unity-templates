@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace PG.Localization
@@ -7,6 +8,11 @@ namespace PG.Localization
         [SerializeField] private string _localizationParameter = "Language";
         private void OnEnable()
         {
+            Init();
+        }
+        async void Init()
+        {
+            await Task.Yield();
             LocalizationSystem.instance.localizationChanged += OnLocalizationChanged;
         }
         private void OnDisable()
