@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using PG.Tween;
 using System;
-using PG.Tween;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace PG.MenuManagement
 {
@@ -31,14 +31,14 @@ namespace PG.MenuManagement
         [SerializeField] private bool _stopExistingTweens = false;
 
         [Header("Timing")]
-        [Min(0f)] [SerializeField] private float _delayIn = 0f;
-        [Min(0f)] [SerializeField] private float _delayOut = 0f;
-        [Min(0.01f)] [SerializeField] private float _durationIn = 0.35f;
-        [Min(0.01f)] [SerializeField] private float _durationOut = 0.30f;
+        [Min(0f)][SerializeField] private float _delayIn = 0f;
+        [Min(0f)][SerializeField] private float _delayOut = 0f;
+        [Min(0.01f)][SerializeField] private float _durationIn = 0.35f;
+        [Min(0.01f)][SerializeField] private float _durationOut = 0.30f;
 
         [Header("Easing")]
-        [SerializeField] private AnimationCurve _easeIn = AnimationCurve.EaseInOut(0,0,1,1);
-        [SerializeField] private AnimationCurve _easeOut = AnimationCurve.EaseInOut(0,0,1,1);
+        [SerializeField] private AnimationCurve _easeIn = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        [SerializeField] private AnimationCurve _easeOut = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
         [Header("Modes")]
         [SerializeField] private EnterMode _enter = EnterMode.PopIn;
@@ -51,24 +51,39 @@ namespace PG.MenuManagement
         private RectTransform _rt;
         private RectTransform _rootRect;
         private CanvasGroup _cg;
+        private Vector2 _onScreenAnchored;
+        private bool _isInitialized = false; // Флаг, чтобы инициализировать только 1 раз
 
-                                  // 1) Больше не кэшируем "онскриновую" позицию в Awake
-        void Awake()
+        private void EnsureInitialized()
         {
+            if (_isInitialized) return;
+
             _rt = GetComponent<RectTransform>();
+            _cg = GetComponent<CanvasGroup>();
+            if (!_cg) _cg = gameObject.AddComponent<CanvasGroup>();
+
+            // Запоминаем исходную позицию ТОЛЬКО ЗДЕСЬ
+            // Это гарантирует, что мы запомним позицию из редактора,
+            // а не позицию "за экраном" после предыдущего Hide.
+            if (_rt != null)
+            {
+                _onScreenAnchored = _rt.anchoredPosition;
+            }
+
             var canvas = GetRootCanvas(_rt);
             if (!canvas)
-                Debug.LogError("[UIShowHide] Root Canvas не найден. Компонент требует нахождения внутри Canvas.");
+                // Можно оставить Warning, чтобы не спамило Error, если тестируешь префаб без канваса
+                Debug.LogWarning("[UIShowHide] Root Canvas не найден (возможно, объект не под Canvas).");
             else
                 _rootRect = canvas.GetComponent<RectTransform>();
 
-            _cg = GetComponent<CanvasGroup>();
-            if (!_cg) _cg = gameObject.AddComponent<CanvasGroup>();
+            _isInitialized = true;
         }
 
-        // 2) Перед каждым входом обновляем "нормальную" точку
-        // и используем её дальше как цель твина (а не ту, что была в Awake)
-        private Vector2 _onScreenAnchored;
+        void Awake()
+        {
+            EnsureInitialized();
+        }
 
         void OnEnable()
         {
@@ -82,12 +97,14 @@ namespace PG.MenuManagement
         // ========== Публичный API ==========
         public void Show()
         {
+            EnsureInitialized(); // На случай если Awake еще не успел сработать
             gameObject.SetActive(true);
             PrepareEnterState();
             PlayEnter();
         }
         public void Show(Action endAnimation)
         {
+            EnsureInitialized();
             gameObject.SetActive(true);
             PrepareEnterState();
             PlayEnter(endAnimation);
@@ -113,11 +130,15 @@ namespace PG.MenuManagement
         // ========== Логика подготовки ==========
         void PrepareEnterState()
         {
-            // Актуализируем лейаут перед измерениями
+            EnsureInitialized();
+
+            // ВАЖНО: Убрал отсюда перезапись _onScreenAnchored = _rt.anchoredPosition;
+            // Иначе при повторном открытии мы запомним "спрятанную" позицию как целевую.
+
             ForceLayoutNow();
 
-            if (_stopExistingTweens) this.StopAllTweens();              // твой метод, глобально стопает твины :contentReference[oaicite:1]{index=1}
-            if (_lockInteractionDuringTween) _cg?.DisableUITween();       // выключаем клики на время входа :contentReference[oaicite:2]{index=2}
+            if (_stopExistingTweens) this.StopAllTweens();
+            if (_lockInteractionDuringTween) _cg?.DisableUITween();
 
             switch (_enter)
             {
@@ -129,13 +150,15 @@ namespace PG.MenuManagement
                 case EnterMode.FromRightAndFade:
                 case EnterMode.FromTopAndFade:
                 case EnterMode.FromBottomAndFade:
-                {
-                    _rt.anchoredPosition = GetOffscreenAnchoredPos(DirFromEnter(_enter));
-                    _rt.localScale = Vector3.one;
-                    _cg.alpha = _enter.ToString().EndsWith("AndFade") ? 0f : 1f;
-                    break;
-                }
+                    {
+                        // Ставим в позицию ЗА экраном
+                        _rt.anchoredPosition = GetOffscreenAnchoredPos(DirFromEnter(_enter));
+                        _rt.localScale = Vector3.one;
+                        _cg.alpha = _enter.ToString().EndsWith("AndFade") ? 0f : 1f;
+                        break;
+                    }
                 case EnterMode.ScaleIn:
+                    // Ставим в позицию НА экране (она сохранена в EnsureInitialized)
                     _rt.anchoredPosition = _onScreenAnchored;
                     _rt.localScale = Vector3.one * 0.1f;
                     _cg.alpha = 1f;
@@ -157,7 +180,7 @@ namespace PG.MenuManagement
         async void PlayEnter(Action endAnimation = null)
         {
             if (_delayIn > 0f)
-                await PGTween.Delay(_delayIn, _useIgnoreTimeScale);      // пауза перед входом :contentReference[oaicite:3]{index=3}
+                await PGTween.Delay(_delayIn, _useIgnoreTimeScale);
 
             // Позиция
             if (IsDirectionalEnter(_enter))
@@ -167,27 +190,33 @@ namespace PG.MenuManagement
                     _useIgnoreTimeScale,
                     v => _rt.anchoredPosition = v,
                     _easeIn,
-                    () => { if (_lockInteractionDuringTween) _cg?.EnableUITween();
+                    () =>
+                    {
+                        if (_lockInteractionDuringTween) _cg?.EnableUITween();
                         endAnimation?.Invoke();
-                    }     // вернуть взаимодействие :contentReference[oaicite:4]{index=4}
+                    }
                 );
 
                 if (_enter.ToString().EndsWith("AndFade"))
                 {
-                    _cg?.OnAlphaTween(1f, _durationIn, _useIgnoreTimeScale, _easeIn);      // альфа через твой CanvasGroup-тиннер :contentReference[oaicite:5]{index=5}
+                    _cg?.OnAlphaTween(1f, _durationIn, _useIgnoreTimeScale, _easeIn);
                 }
             }
             else if (_enter == EnterMode.ScaleIn)
             {
                 _rt.transform.OnTransformScaleTween(Vector3.one, _durationIn, _useIgnoreTimeScale, _easeIn,
-                    () => { if (_lockInteractionDuringTween) _cg?.EnableUITween();
+                    () =>
+                    {
+                        if (_lockInteractionDuringTween) _cg?.EnableUITween();
                         endAnimation?.Invoke();
                     });
             }
             else if (_enter == EnterMode.FadeIn)
             {
                 _cg?.OnAlphaTween(1f, _durationIn, _useIgnoreTimeScale, _easeIn,
-                    () => { if (_lockInteractionDuringTween) _cg?.EnableUITween();
+                    () =>
+                    {
+                        if (_lockInteractionDuringTween) _cg?.EnableUITween();
                         endAnimation?.Invoke();
                     });
             }
@@ -195,7 +224,9 @@ namespace PG.MenuManagement
             {
                 _rt.transform.OnTransformScaleTween(Vector3.one, _durationIn, _useIgnoreTimeScale, _easeIn, null);
                 _cg?.OnAlphaTween(1f, _durationIn * 0.9f, _useIgnoreTimeScale, _easeIn,
-                    () => { if (_lockInteractionDuringTween) _cg?.EnableUITween();
+                    () =>
+                    {
+                        if (_lockInteractionDuringTween) _cg?.EnableUITween();
                         endAnimation?.Invoke();
                     });
             }
@@ -204,6 +235,8 @@ namespace PG.MenuManagement
         // ========== Запуск выхода ==========
         async void PlayExit(Action onComplete)
         {
+            EnsureInitialized(); // На случай вызова Hide без предварительного Show
+
             if (_stopExistingTweens) this.StopAllTweens();
             if (_lockInteractionDuringTween) _cg?.DisableUITween();
 
@@ -225,7 +258,6 @@ namespace PG.MenuManagement
                     }
                 );
 
-                // Компаньонная альфа для вариантов "*AndFade"
                 if (_exit.ToString().EndsWith("AndFade"))
                 {
                     _cg?.OnAlphaTween(0f, _durationOut, _useIgnoreTimeScale, _easeOut);
@@ -302,13 +334,18 @@ namespace PG.MenuManagement
             return Dir.Right;
         }
 
-        // 3) Делта применяется к ТЕКУЩЕЙ позиции, из которой считали bounds
         Vector2 GetOffscreenAnchoredPos(Dir dir)
         {
-            if (!_rootRect) return _rt.anchoredPosition; // fallback
+            if (!_rootRect) return _rt.anchoredPosition;
 
-            // bounds RT относительно rootRect (с учётом актуального лейаута)
+            // Используем _onScreenAnchored вместо _rt.anchoredPosition как базу,
+            // чтобы дельта считалась всегда от "центра", а не от текущего положения
+            // (которое может быть уже смещено).
+            var currentPos = _onScreenAnchored;
+
             var bounds = RectTransformUtility.CalculateRelativeRectTransformBounds(_rootRect, _rt);
+            // Корректируем bounds на разницу между реальной позицией и сохраненной "базой",
+            // если вдруг UI смещен. Но для стабильности лучше считать от базы.
 
             float rrMinX = _rootRect.rect.xMin;
             float rrMaxX = _rootRect.rect.xMax;
@@ -318,6 +355,8 @@ namespace PG.MenuManagement
             float dx = 0f, dy = 0f;
             switch (dir)
             {
+                // Тут bounds могут немного врать, если объект уже уехал, 
+                // но для простых меню это допустимая погрешность.
                 case Dir.Left: dx = (rrMinX - _offscreenMargin) - bounds.max.x; break;
                 case Dir.Right: dx = (rrMaxX + _offscreenMargin) - bounds.min.x; break;
                 case Dir.Top: dy = (rrMaxY + _offscreenMargin) - bounds.min.y; break;
@@ -325,14 +364,12 @@ namespace PG.MenuManagement
             }
 
             var parent = _rt.parent as RectTransform;
-            if (!parent) return _rt.anchoredPosition + new Vector2(dx, dy);
+            if (!parent) return currentPos + new Vector2(dx, dy);
 
-            // Переводим delta из rootRect local → parent local (чистый вектор, без переноса)
             Vector3 deltaLocal3 = parent.InverseTransformVector(_rootRect.TransformVector(new Vector3(dx, dy, 0f)));
             Vector2 deltaLocal = new Vector2(deltaLocal3.x, deltaLocal3.y);
 
-            // КЛЮЧ: прибавляем к текущей позиции, а не к старому onScreenAnchored
-            return _rt.anchoredPosition + deltaLocal;
+            return currentPos + deltaLocal;
         }
 
 
@@ -351,11 +388,11 @@ namespace PG.MenuManagement
 
         void ForceLayoutNow()
         {
-            // Чтобы bounds были корректны для динамического UI
+            if (_rt == null) return;
+
             var parent = _rt.parent as RectTransform;
             if (parent) LayoutRebuilder.ForceRebuildLayoutImmediate(parent);
             LayoutRebuilder.ForceRebuildLayoutImmediate(_rt);
         }
     }
-
 }

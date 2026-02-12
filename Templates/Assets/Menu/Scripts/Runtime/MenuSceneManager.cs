@@ -13,7 +13,7 @@ namespace PG.MenuManagement
 
         public virtual void UnloadScene(string sceneName)
         {
-            SceneManager.UnloadScene(sceneName);
+            SceneManager.UnloadSceneAsync(sceneName);
         }
     }
 
