@@ -10,6 +10,29 @@ namespace PG.Tween
     {
         private static bool isStopTween;
         private static CancellationTokenSource cancellationTokenSource;
+
+        /// <summary>
+        /// Немедленно отменяет все активные твины. Безопасно вызывать из Editor-хука.
+        /// </summary>
+        public static void CancelAll()
+        {
+            if (cancellationTokenSource != null)
+            {
+                cancellationTokenSource.Cancel();
+                cancellationTokenSource.Dispose();
+                cancellationTokenSource = null;
+            }
+            isStopTween = true;
+        }
+
+        /// <summary>
+        /// Сбрасывает флаг остановки. Вызывается после входа в EditMode.
+        /// </summary>
+        public static void ResetState()
+        {
+            isStopTween = false;
+        }
+
         public static async void StopAllTweens(this MonoBehaviour monoBehaviour)
         {
             if (cancellationTokenSource != null)
@@ -280,7 +303,7 @@ namespace PG.Tween
                 return;
             }
             float elapsedTime = 0f;
-            Color from = image.color; // Запоминаем начальный цвет
+            Color from = image.color;
 
             if (animationCurve == null)
             {
@@ -297,9 +320,8 @@ namespace PG.Tween
                     return;
                 }
 
-                float t = elapsedTime / time; // Вычисляем прогресс от 0 до 1
+                float t = elapsedTime / time;
 
-                // Интерполируем цвет между начальным и целевым цветом
                 image.color = Color.LerpUnclamped(from, to, animationCurve.Evaluate(t));
 
                 if (useIgnoreTimeScale)
@@ -322,7 +344,7 @@ namespace PG.Tween
                 return;
             }
             float elapsedTime = 0f;
-            Color from = material.color; // Запоминаем начальный цвет
+            Color from = material.color; //   
 
             if (animationCurve == null)
             {
@@ -338,9 +360,8 @@ namespace PG.Tween
                 {
                     return;
                 }
-                float t = elapsedTime / time; // Вычисляем прогресс от 0 до 1
+                float t = elapsedTime / time;
 
-                // Интерполируем цвет между начальным и целевым цветом
                 material.color = Color.LerpUnclamped(from, to, animationCurve.Evaluate(t));
                 if (useIgnoreTimeScale)
                 {
@@ -719,12 +740,7 @@ namespace PG.Tween
 
                 await Task.Yield();
 
-                // Проверяем, существует ли объект onUpdate
-
-
             }
-
-            // Убедимся, что последнее значение соответствует точному значению "to"
             onUpdate.Invoke(to);
             ended?.Invoke();
         }
@@ -760,12 +776,8 @@ namespace PG.Tween
 
                 await Task.Yield();
 
-                // Проверяем, существует ли объект onUpdate
-
-
             }
 
-            // Убедимся, что последнее значение соответствует точному значению "to"
             onUpdate.Invoke(to);
             ended?.Invoke();
         }
@@ -804,7 +816,6 @@ namespace PG.Tween
 
             }
 
-            // Убедимся, что последнее значение соответствует точному значению "to"
             onUpdate.Invoke(to);
             ended?.Invoke();
         }
@@ -841,12 +852,10 @@ namespace PG.Tween
 
                 await Task.Yield();
 
-                // Проверяем, существует ли объект onUpdate
 
 
             }
 
-            // Убедимся, что последнее значение соответствует точному значению "to"
             onUpdate.Invoke(to);
             ended?.Invoke();
         }
@@ -883,12 +892,8 @@ namespace PG.Tween
 
                 await Task.Yield();
 
-                // Проверяем, существует ли объект onUpdate
-
-
             }
 
-            // Убедимся, что последнее значение соответствует точному значению "to"
             onUpdate.Invoke(to);
             ended?.Invoke();
         }
@@ -903,4 +908,36 @@ namespace PG.Tween
             canvasGroup.interactable = false;
         }
     }
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// Хук для редактора: отменяет все твины в момент выхода из PlayMode,
+    /// до того как Unity начинает откат (revert) состояния сцены.
+    /// Предотвращает запись промежуточных значений твинов в объекты сцены.
+    /// </summary>
+    [UnityEditor.InitializeOnLoad]
+    static class PGTweenEditorPlayModeHook
+    {
+        static PGTweenEditorPlayModeHook()
+        {
+            UnityEditor.EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+            UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+        }
+
+        static void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange state)
+        {
+            // ExitingPlayMode — самый ранний момент, когда можно остановить твины
+            // ещё до того, как Unity начнёт откатывать трансформы/компоненты.
+            if (state == UnityEditor.PlayModeStateChange.ExitingPlayMode)
+            {
+                PGTween.CancelAll();
+            }
+            // EnteredEditMode — сбрасываем флаг, чтобы не мешать следующему запуску.
+            else if (state == UnityEditor.PlayModeStateChange.EnteredEditMode)
+            {
+                PGTween.ResetState();
+            }
+        }
+    }
+#endif
 }
